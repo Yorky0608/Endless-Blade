@@ -1,7 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://bspy4rvse1yv8"]
+[gd_scene load_steps=26 format=3 uid="uid://bspy4rvse1yv8"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_b3yer"]
-[ext_resource type="Texture2D" uid="uid://d3h872d03i2mb" path="res://sprites/2/Idle.png" id="2_skf2v"]
+[ext_resource type="Texture2D" uid="uid://55kc7plv4lg1" path="res://sprites/2/Attack2.png" id="2_jkdam"]
 [ext_resource type="AudioStream" uid="uid://cj78mf5ulvfyu" path="res://assets/audio/jump4.ogg" id="3_cfmin"]
 [ext_resource type="AudioStream" uid="uid://cjf1tattajnal" path="res://assets/audio/hurt1.ogg" id="3_wy6fc"]
 
@@ -306,6 +306,9 @@ _data = {
 [sub_resource type="Gradient" id="Gradient_ad3dv"]
 colors = PackedColorArray(1, 0.874624, 0.466843, 1, 1, 0.87451, 0.466667, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1o32"]
+size = Vector2(24.5, 20.25)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 13
@@ -314,8 +317,8 @@ script = ExtResource("1_b3yer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(5, -21)
-texture = ExtResource("2_skf2v")
-hframes = 4
+texture = ExtResource("2_jkdam")
+hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -12)
@@ -355,3 +358,10 @@ gravity = Vector2(2.08165e-12, 2.08165e-12)
 initial_velocity_max = 10.0
 scale_amount_max = 3.0
 color_ramp = SubResource("Gradient_ad3dv")
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(18, -13.875)
+shape = SubResource("RectangleShape2D_w1o32")
+debug_color = Color(0.868136, 0.300206, 0.48499, 0.42)

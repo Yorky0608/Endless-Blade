@@ -25,7 +25,7 @@ var run_attack2_texture = preload("res://sprites/2/RunAttack2.png")
 var walk_attack1_texture = preload("res://sprites/2/WalkAttack1.png")
 var walk_attack2_texture = preload("res://sprites/2/WalkAttack2.png")
 
-enum {IDLE, RUN, JUMP, HURT, DEAD}
+enum {IDLE, RUN, JUMP, HURT, DEAD, ATTACK}
 var state = IDLE
 var last_floor = false
 var is_on_ladder = false
@@ -52,7 +52,8 @@ func get_input():
 	var right = Input.is_action_pressed("right")
 	var left = Input.is_action_pressed("left")
 	var jump = Input.is_action_just_pressed("jump")
-	
+	var attack = Input.is_action_just_pressed("attack")
+
 
 	# movement occurs in all states
 	velocity.x = 0
@@ -76,8 +77,14 @@ func get_input():
 	# transition to JUMP when in the air
 	if state in [IDLE, RUN] and !is_on_floor():
 		change_state(JUMP)
-	
-	
+	# transition from running or jumping to attacking
+	if attack and not right and not left and not jump:
+		$Sprite2D.set_frame(0)
+		change_state(ATTACK)
+	if state == ATTACK and $AnimationPlayer.is_playing() == false:
+		change_state(IDLE)
+
+
 func change_state(new_state):
 	state = new_state
 	match state:
@@ -101,13 +108,21 @@ func change_state(new_state):
 			if life <= 0:
 				change_state(DEAD)
 		JUMP:
-			$Sprite2D.texture = walk_texture
-			$Sprite2D.set_hframes(6)
+			$Sprite2D.texture = jump_texture
+			$Sprite2D.set_hframes(8)
 			$AnimationPlayer.play("Jump")
 		DEAD:
 			died.emit()
 			hide()
-			
+		ATTACK:
+			$AttackArea.monitoring = true
+			$Sprite2D.texture = attack2_texture
+			$Sprite2D.set_hframes(6)
+			$AnimationPlayer.play("Attack2")
+			await $AnimationPlayer.animation_finished
+			$AttackArea.monitoring = false
+
+
 func _physics_process(delta):	
 	velocity.y += gravity * delta
 	get_input()

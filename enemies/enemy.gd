@@ -8,7 +8,7 @@ var facing = 1
 func _physics_process(delta):
 	velocity.y += gravity * delta
 	velocity.x = facing * speed
-	$Sprite2D.flip_h = velocity.x > 0
+	$Sprite2D.flip_h = velocity.x < 0
 	
 	move_and_slide()
 	for i in get_slide_collision_count():
