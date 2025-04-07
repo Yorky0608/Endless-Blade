@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwd7f51hik30e"
-valid=false
+path="res://.godot/imported/Walk.png-dbbaee5e4b676a85b8f5a3596fdd65b1.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://monsters3/Skeleton/Walk.png"
+dest_files=["res://.godot/imported/Walk.png-dbbaee5e4b676a85b8f5a3596fdd65b1.ctex"]
 
 [params]
 

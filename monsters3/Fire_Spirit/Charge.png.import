@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ym8pt67j65ui"
-valid=false
+path="res://.godot/imported/Charge.png-ad56aee1b6e9034373f724955a2c5fba.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://monsters3/Fire_Spirit/Charge.png"
+dest_files=["res://.godot/imported/Charge.png-ad56aee1b6e9034373f724955a2c5fba.ctex"]
 
 [params]
 

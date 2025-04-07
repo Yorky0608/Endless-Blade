@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bna6vpf3813mx"
-valid=false
+path="res://.godot/imported/Magic_1.png-a737ab46fea1b578db9ef33f05e2d0cd.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://monsters2/Orc_Shaman/Magic_1.png"
+dest_files=["res://.godot/imported/Magic_1.png-a737ab46fea1b578db9ef33f05e2d0cd.ctex"]
 
 [params]
 

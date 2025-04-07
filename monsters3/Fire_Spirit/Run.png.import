@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://xre5uu7h75uh"
-valid=false
+path="res://.godot/imported/Run.png-63c2c98c7032625dbbb96811231b508a.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://monsters3/Fire_Spirit/Run.png"
+dest_files=["res://.godot/imported/Run.png-63c2c98c7032625dbbb96811231b508a.ctex"]
 
 [params]
 

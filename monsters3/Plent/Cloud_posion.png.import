@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rwovxcdbag1t"
-valid=false
+path="res://.godot/imported/Cloud_posion.png-54bed36890e6a67073f8ec069fa777da.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://monsters3/Plent/Cloud_posion.png"
+dest_files=["res://.godot/imported/Cloud_posion.png-54bed36890e6a67073f8ec069fa777da.ctex"]
 
 [params]
 

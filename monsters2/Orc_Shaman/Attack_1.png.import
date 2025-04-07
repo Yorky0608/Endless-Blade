@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cn3w5s76vsl7e"
-valid=false
+path="res://.godot/imported/Attack_1.png-b7bf2cabd4fd600650e7f861ce1bc8f7.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://monsters2/Orc_Shaman/Attack_1.png"
+dest_files=["res://.godot/imported/Attack_1.png-b7bf2cabd4fd600650e7f861ce1bc8f7.ctex"]
 
 [params]
 

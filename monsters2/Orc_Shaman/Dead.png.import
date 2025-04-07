@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3dxb4vl6bjyh"
-valid=false
+path="res://.godot/imported/Dead.png-61333c8ff0d9a98df9f8d8bb3f08916c.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://monsters2/Orc_Shaman/Dead.png"
+dest_files=["res://.godot/imported/Dead.png-61333c8ff0d9a98df9f8d8bb3f08916c.ctex"]
 
 [params]
 

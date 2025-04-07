@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dg8kt40oxt6oq"
-valid=false
+path="res://.godot/imported/Idle.png-4ba1d3dacbcd81aacec6570ffa9cb57c.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://monsters3/Fire_Spirit/Idle.png"
+dest_files=["res://.godot/imported/Idle.png-4ba1d3dacbcd81aacec6570ffa9cb57c.ctex"]
 
 [params]
 

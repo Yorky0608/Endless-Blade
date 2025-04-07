@@ -3,11 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://3cgmotc6eyw2"
-valid=false
+path="res://.godot/imported/Grasslands Theme.ogg-4e1b1b74724525d6e433c6319cbad86b.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/audio/Grasslands Theme.ogg"
+dest_files=["res://.godot/imported/Grasslands Theme.ogg-4e1b1b74724525d6e433c6319cbad86b.oggvorbisstr"]
 
 [params]
 

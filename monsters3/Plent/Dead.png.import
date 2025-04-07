@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4vs1l07apmlb"
-valid=false
+path="res://.godot/imported/Dead.png-e02eada23067b96300cbe7c52fa09375.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://monsters3/Plent/Dead.png"
+dest_files=["res://.godot/imported/Dead.png-e02eada23067b96300cbe7c52fa09375.ctex"]
 
 [params]
 

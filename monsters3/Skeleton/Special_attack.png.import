@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rvt8mwc4y7gg"
-valid=false
+path="res://.godot/imported/Special_attack.png-4eca11580b3d8a98666063bef3968638.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://monsters3/Skeleton/Special_attack.png"
+dest_files=["res://.godot/imported/Special_attack.png-4eca11580b3d8a98666063bef3968638.ctex"]
 
 [params]
 

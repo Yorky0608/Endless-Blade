@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://tb5e8i3s0kbo"
-valid=false
+path="res://.godot/imported/Hurt.png-52816b926725b3fc5ee33d2b82a10bb2.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://monsters3/Skeleton/Hurt.png"
+dest_files=["res://.godot/imported/Hurt.png-52816b926725b3fc5ee33d2b82a10bb2.ctex"]
 
 [params]
 

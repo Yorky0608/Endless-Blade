@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cveetfjminwbm"
-valid=false
+path="res://.godot/imported/Run.png-4e9254d3158da1d3d69c5a40b0e5a812.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://monsters3/Skeleton/Run.png"
+dest_files=["res://.godot/imported/Run.png-4e9254d3158da1d3d69c5a40b0e5a812.ctex"]
 
 [params]
 

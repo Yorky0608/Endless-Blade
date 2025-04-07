@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8coew8bocdpd"
-valid=false
+path="res://.godot/imported/Disguise.png-4f28e45f7b59b867e5575b22b1b1484d.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://monsters3/Plent/Disguise.png"
+dest_files=["res://.godot/imported/Disguise.png-4f28e45f7b59b867e5575b22b1b1484d.ctex"]
 
 [params]
 

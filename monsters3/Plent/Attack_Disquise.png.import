@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://yyrw44bjf2ys"
-valid=false
+path="res://.godot/imported/Attack_Disquise.png-b15b7874beda6f1b26735a41b7229c73.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://monsters3/Plent/Attack_Disquise.png"
+dest_files=["res://.godot/imported/Attack_Disquise.png-b15b7874beda6f1b26735a41b7229c73.ctex"]
 
 [params]
 

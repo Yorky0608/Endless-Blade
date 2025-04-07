@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqs6lgkv60n76"
-valid=false
+path="res://.godot/imported/Run+Attack.png-c682c43d4157227873ecdd3cb12d12ee.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://monsters2/Orc_Berserk/Run+Attack.png"
+dest_files=["res://.godot/imported/Run+Attack.png-c682c43d4157227873ecdd3cb12d12ee.ctex"]
 
 [params]
 
