@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://m2qlmmp2r8bt" path="res://levels/levelbase.tscn" id="1_30cml"]
 [ext_resource type="Texture2D" uid="uid://bm7s6wl5mv6mu" path="res://tileset/1 Tiles/Tileset.png" id="2_pwfj7"]
-[ext_resource type="PackedScene" uid="uid://dnu0rceo3bl7m" path="res://enemies/skelly.tscn" id="3_l8k5a"]
+[ext_resource type="PackedScene" uid="uid://dnu0rceo3bl7m" path="res://levels/skelly.tscn" id="3_l8k5a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fcchr"]
 texture = ExtResource("2_pwfj7")

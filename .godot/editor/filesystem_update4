@@ -1,0 +1,5 @@
+res://ui/title.tscn
+res://assets/tilesets/tiles_world.tres
+res://assets/tilesets/tiles_items.tres
+res://assets/tilesets/tiles_spikes.tres
+res://levels/level_01.tscn
