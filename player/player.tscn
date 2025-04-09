@@ -365,3 +365,6 @@ color_ramp = SubResource("Gradient_ad3dv")
 position = Vector2(18, -13.875)
 shape = SubResource("RectangleShape2D_w1o32")
 debug_color = Color(0.868136, 0.300206, 0.48499, 0.42)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

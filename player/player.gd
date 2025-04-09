@@ -20,8 +20,6 @@ var jump_attack_texture = preload("res://sprites/2/JumpAttack.png")
 var run_texture = preload("res://sprites/2/Run.png")
 var run_attack1_texture = preload("res://sprites/2/RunAttack1.png")
 var run_attack2_texture = preload("res://sprites/2/RunAttack2.png")
-#var squat_texture = preload("res://sprites/2/Squat.png")
-#var squat_attack_texture = preload("res://sprites/2/SquatAttack.png")
 var walk_attack1_texture = preload("res://sprites/2/WalkAttack1.png")
 var walk_attack2_texture = preload("res://sprites/2/WalkAttack2.png")
 
@@ -29,23 +27,24 @@ enum {IDLE, RUN, JUMP, HURT, DEAD, ATTACK}
 var state = IDLE
 var last_floor = false
 var is_on_ladder = false
-var life = 3: 
-	set = set_life
+var life = 100
+@export var damage: int = 25  # The damage this attack deals
 
 func _ready():
 	change_state(IDLE)
+	$AttackArea.body_entered.connect(_on_attack_area_body_entered)
 
 func reset(_position):
 	position = _position
 	show()
 	change_state(IDLE)
 	life = 3
-	
+
 func hurt():
 	if state != HURT:
 		$HurtSound.play()
 		change_state(HURT)
-	
+
 func get_input():
 	if state == HURT:
 		return  # don't allow movement during hurt state
@@ -53,7 +52,6 @@ func get_input():
 	var left = Input.is_action_pressed("left")
 	var jump = Input.is_action_just_pressed("jump")
 	var attack = Input.is_action_just_pressed("attack")
-
 
 	# movement occurs in all states
 	velocity.x = 0
@@ -81,9 +79,8 @@ func get_input():
 	if attack and not right and not left and not jump:
 		$Sprite2D.set_frame(0)
 		change_state(ATTACK)
-	if state == ATTACK and $AnimationPlayer.is_playing() == false:
+	if state == ATTACK and !$AnimationPlayer.is_playing():
 		change_state(IDLE)
-
 
 func change_state(new_state):
 	state = new_state
@@ -122,8 +119,7 @@ func change_state(new_state):
 			await $AnimationPlayer.animation_finished
 			$AttackArea.monitoring = false
 
-
-func _physics_process(delta):	
+func _physics_process(delta):    
 	velocity.y += gravity * delta
 	get_input()
 	
@@ -135,11 +131,7 @@ func _physics_process(delta):
 		if collision.get_collider().is_in_group("danger"):
 			hurt()
 		if collision.get_collider().is_in_group("enemies"):
-			if position.y < collision.get_collider().position.y:
-				collision.get_collider().take_damage()
-				velocity.y = -200
-			else:
-				hurt()
+			hurt()
 	
 	if state == JUMP and is_on_floor():
 		change_state(IDLE)
@@ -149,3 +141,8 @@ func _physics_process(delta):
 func set_life(value):
 	life = value
 	life_changed.emit(life)
+
+func _on_attack_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemies"):
+		# Apply damage to the enemy
+		body.apply_damage(damage)
