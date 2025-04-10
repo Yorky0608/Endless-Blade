@@ -4,11 +4,22 @@ extends CharacterBody2D
 
 @export var speed = 50
 @export var gravity = 900
+@export var contact_damage = 1
+
+var death_texture = preload("res://monsters3/Skeleton/Dead.png")
 
 var facing = 1
 var health: int = 25  # The enemy's health
+var damage_enabled = false
+var alive = true
+
+func _ready():
+	await get_tree().create_timer(0.5).timeout
+	damage_enabled = true
 
 func _physics_process(delta):
+	if not alive:
+		return
 	velocity.y += gravity * delta
 
 	if player:
@@ -28,17 +39,20 @@ func _physics_process(delta):
 			velocity.y = -100
 		
 func death():
-	$HitSound.play()
+	alive = false
+	damage_enabled = false
+	$Sprite2D.set_hframes(3)
+	$Sprite2D.texture = death_texture
 	$AnimationPlayer.play("death")
-	$CollisionShape2D.set_deferred("disabled", true)
-	set_physics_process(false)
-
-
-func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "death":
-		queue_free()
+	await $AnimationPlayer.animation_finished
+	await get_tree().create_timer(2.0).timeout
+	queue_free()
 
 func apply_damage(amount: int):
 	health -= amount
 	if health <= 0:
 		death()
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if damage_enabled and body.is_in_group("player"):
+		body.take_damage(contact_damage)

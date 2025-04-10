@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://bspy4rvse1yv8"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_b3yer"]
-[ext_resource type="Texture2D" uid="uid://55kc7plv4lg1" path="res://sprites/2/Attack2.png" id="2_jkdam"]
+[ext_resource type="Texture2D" uid="uid://cfhmvheaqhm5r" path="res://sprites/2/Jump.png" id="2_jy0er"]
 [ext_resource type="AudioStream" uid="uid://cj78mf5ulvfyu" path="res://assets/audio/jump4.ogg" id="3_cfmin"]
 [ext_resource type="AudioStream" uid="uid://cjf1tattajnal" path="res://assets/audio/hurt1.ogg" id="3_wy6fc"]
 
@@ -107,7 +107,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_bwjto"]
 resource_name = "Jump"
-length = 2.6
+length = 1.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -115,10 +115,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 0.456667, 0.89, 1.32333, 1.75667, 2.19),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(-3.33786e-06, 0.433337, 0.866667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5]
+"values": [3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_n7ghd"]
@@ -317,8 +317,8 @@ script = ExtResource("1_b3yer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(5, -21)
-texture = ExtResource("2_jkdam")
-hframes = 6
+texture = ExtResource("2_jy0er")
+hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -12)
@@ -360,6 +360,8 @@ scale_amount_max = 3.0
 color_ramp = SubResource("Gradient_ad3dv")
 
 [node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(18, -13.875)

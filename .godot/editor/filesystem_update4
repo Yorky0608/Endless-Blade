@@ -1,9 +1,9 @@
-res://levels/level_01.tscn
+res://ui/title.tscn
 res://assets/tilesets/tiles_world.tres
 res://assets/tilesets/tiles_items.tres
 res://assets/tilesets/tiles_spikes.tres
-res://player/player.tscn
-res://enemies/enemy.gd
-res://ui/title.tscn
+res://levels/level_01.tscn
 res://enemies/skelly.tscn
+res://player/player.tscn
 res://player/player.gd
+res://enemies/enemy.gd

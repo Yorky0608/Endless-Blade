@@ -28,6 +28,8 @@ var state = IDLE
 var last_floor = false
 var is_on_ladder = false
 var life = 100
+var can_be_damaged = true
+
 @export var damage: int = 25  # The damage this attack deals
 
 func _ready():
@@ -38,7 +40,7 @@ func reset(_position):
 	position = _position
 	show()
 	change_state(IDLE)
-	life = 3
+	life = 100
 
 func hurt():
 	if state != HURT:
@@ -99,8 +101,6 @@ func change_state(new_state):
 			$AnimationPlayer.play("Hurt")
 			velocity.y = -200
 			velocity.x = -100 * sign(velocity.x)
-			life -= 1
-			await get_tree().create_timer(0.5).timeout
 			change_state(IDLE)
 			if life <= 0:
 				change_state(DEAD)
@@ -130,13 +130,20 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		if collision.get_collider().is_in_group("danger"):
 			hurt()
-		if collision.get_collider().is_in_group("enemies"):
-			hurt()
 	
 	if state == JUMP and is_on_floor():
 		change_state(IDLE)
 		$Dust.emitting = true
 	last_floor = is_on_floor()
+
+func take_damage(amount):
+	if not can_be_damaged:
+		return
+	life -= amount
+	hurt()
+	can_be_damaged = false
+	await get_tree().create_timer(1.0).timeout  # 1 second of invincibility
+	can_be_damaged = true
 
 func set_life(value):
 	life = value
