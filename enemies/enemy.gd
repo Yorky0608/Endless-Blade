@@ -45,10 +45,13 @@ func death():
 	$Sprite2D.texture = death_texture
 	$AnimationPlayer.play("death")
 	await $AnimationPlayer.animation_finished
+	$CollisionShape2D.set_deferred("disabled", true)
 	await get_tree().create_timer(2.0).timeout
 	queue_free()
 
 func apply_damage(amount: int):
+	if not alive:
+		return
 	health -= amount
 	if health <= 0:
 		death()

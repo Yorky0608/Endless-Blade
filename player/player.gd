@@ -83,6 +83,17 @@ func get_input():
 		change_state(ATTACK)
 	if state == ATTACK and !$AnimationPlayer.is_playing():
 		change_state(IDLE)
+	# RUN transitions to IDLE when standing still
+	if state == RUN and attack:
+		$AnimationPlayer.speed_scale = 5.0
+		$AttackArea.monitoring = true
+		$Sprite2D.texture = run_attack2_texture
+		$Sprite2D.set_hframes(6)
+		$AnimationPlayer.play("RunAttack2")
+		await $AnimationPlayer.animation_finished
+		$AttackArea.monitoring = false
+		$AnimationPlayer.speed_scale = 3.0
+		change_state(RUN)
 
 func change_state(new_state):
 	state = new_state
@@ -112,12 +123,14 @@ func change_state(new_state):
 			died.emit()
 			hide()
 		ATTACK:
+			$AnimationPlayer.speed_scale = 5.0
 			$AttackArea.monitoring = true
 			$Sprite2D.texture = attack2_texture
 			$Sprite2D.set_hframes(6)
 			$AnimationPlayer.play("Attack2")
 			await $AnimationPlayer.animation_finished
 			$AttackArea.monitoring = false
+			$AnimationPlayer.speed_scale = 3.0
 
 func _physics_process(delta):    
 	velocity.y += gravity * delta

@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://bspy4rvse1yv8"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_b3yer"]
-[ext_resource type="Texture2D" uid="uid://cfhmvheaqhm5r" path="res://sprites/2/Jump.png" id="2_jy0er"]
+[ext_resource type="Texture2D" uid="uid://55kc7plv4lg1" path="res://sprites/2/Attack2.png" id="2_jkdam"]
 [ext_resource type="AudioStream" uid="uid://cj78mf5ulvfyu" path="res://assets/audio/jump4.ogg" id="3_cfmin"]
 [ext_resource type="AudioStream" uid="uid://cjf1tattajnal" path="res://assets/audio/hurt1.ogg" id="3_wy6fc"]
 
@@ -317,8 +317,8 @@ script = ExtResource("1_b3yer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(5, -21)
-texture = ExtResource("2_jy0er")
-hframes = 8
+texture = ExtResource("2_jkdam")
+hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -12)
@@ -329,7 +329,7 @@ libraries = {
 "": SubResource("AnimationLibrary_i3pqv")
 }
 autoplay = "Idle"
-speed_scale = 3.0
+speed_scale = 4.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
