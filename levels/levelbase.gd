@@ -39,18 +39,18 @@ func generate_level():
 			# Randomly decide if a platform should appear
 			if randf() < platform_chance:
 				var tile_id = 1  # Set platform tile (ID 1)
-				tilemap.set_cell(Vector2i(x, y), tile_id)  
+				tilemap.set_cell(Vector2(x, y), tile_id)  
 				
 				# Check if the tile has a collision shape
 				if has_collision(tile_id):
 					print("Tile at ", x, ",", y, " has a collision.")
 			else:
-				tilemap.set_cell(Vector2i(x, y), -1)  # Empty space tile (ID -1)
+				tilemap.set_cell(Vector2(x, y), -1)  # Empty space tile (ID -1)
 
 	# Ensure the bottom row is always solid ground
 	for x in range(width):
 		var tile_id = 1  # Set ground tile ID to 1
-		tilemap.set_cell(Vector2i(x, height - 1), tile_id)
+		tilemap.set_cell(Vector2(x, height - 1), tile_id)
 
 		# Check if ground tile has collision
 		if has_collision(tile_id):
