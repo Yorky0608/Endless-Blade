@@ -7,3 +7,8 @@ res://enemies/skelly.tscn
 res://player/player.tscn
 res://player/player.gd
 res://enemies/enemy.gd
+res://levels/levelbase.tscn
+res://levels/levelbase.gd
+res://game_state.gd
+res://main.gd
+res://main.tscn

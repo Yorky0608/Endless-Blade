@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://m2qlmmp2r8bt"]
+[gd_scene load_steps=7 format=3 uid="uid://m2qlmmp2r8bt"]
 
 [ext_resource type="Script" path="res://levels/levelbase.gd" id="1_6oj8v"]
 [ext_resource type="TileSet" uid="uid://dhxw3f8l2saqn" path="res://assets/tilesets/tiles_world.tres" id="1_mcqs0"]
-[ext_resource type="TileSet" uid="uid://dn505hopwb4de" path="res://assets/tilesets/tiles_items.tres" id="2_4lf3x"]
 [ext_resource type="PackedScene" uid="uid://bspy4rvse1yv8" path="res://player/player.tscn" id="2_igsqv"]
-[ext_resource type="TileSet" uid="uid://blhd0ogpuydej" path="res://assets/tilesets/tiles_spikes.tres" id="4_xb325"]
 [ext_resource type="AudioStream" uid="uid://3cgmotc6eyw2" path="res://assets/audio/Grasslands Theme.ogg" id="8_bqio8"]
 [ext_resource type="AudioStream" uid="uid://dlpqdmo4n4w6r" path="res://assets/audio/pickup2.ogg" id="9_sbkng"]
 [ext_resource type="PackedScene" uid="uid://vea3dq41ewm6" path="res://levels/background.tscn" id="9_x6j7o"]
@@ -16,15 +14,6 @@ script = ExtResource("1_6oj8v")
 tile_set = ExtResource("1_mcqs0")
 format = 2
 layer_0/name = "world"
-
-[node name="Items" type="TileMap" parent="."]
-tile_set = ExtResource("2_4lf3x")
-format = 2
-layer_0/name = "world"
-
-[node name="Danger" type="TileMap" parent="." groups=["danger"]]
-tile_set = ExtResource("4_xb325")
-format = 2
 
 [node name="Player" parent="." instance=ExtResource("2_igsqv")]
 position = Vector2(215, 94)

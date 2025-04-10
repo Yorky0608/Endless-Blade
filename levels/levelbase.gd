@@ -2,6 +2,12 @@ extends Node2D
 
 signal score_changed
 
+@onready var tilemap = $World
+@export var width = 20  # Number of tiles horizontally
+@export var height = 10  # Number of tiles vertically
+@export var platform_chance = 0.3  # Chance for a platform to appear
+@export var tile_size = 32  # Tile size in pixels
+
 var score = 0 : set = set_score
 
 var item_scene = load("res://items/item.tscn")
@@ -9,11 +15,9 @@ var door_scene = load("res://items/door.tscn")
 
 func _ready():
 	score = 0
-	$Items.hide()
 	$Player.reset($SpawnPoint.position)
 	set_camera_limits()
-	spawn_items()
-	create_ladders()
+	generate_level()
 	
 func set_camera_limits():
 	var map_size = $World.get_used_rect()
@@ -21,51 +25,40 @@ func set_camera_limits():
 	$Player/Camera2D.limit_left = (map_size.position.x - 5) * cell_size.x
 	$Player/Camera2D.limit_right = (map_size.end.x + 5) * cell_size.x
 
-func spawn_items():
-	var item_cells = $Items.get_used_cells(0)
-	for cell in item_cells:
-		var data = $Items.get_cell_tile_data(0, cell)
-		var type = data.get_custom_data("type")
-		if type == "door":
-			var door = door_scene.instantiate()
-			add_child(door)
-			door.position = $Items.map_to_local(cell)
-			door.body_entered.connect(_on_door_entered)
-		else:
-			var item = item_scene.instantiate()
-			add_child(item)
-			item.init(type, $Items.map_to_local(cell))
-			item.picked_up.connect(self._on_item_picked_up)
-
-func create_ladders():
-	var cells = $World.get_used_cells(0)
-	for cell in cells:
-		var data = $World.get_cell_tile_data(0, cell)
-		if data.get_custom_data("special") == "ladder":
-			var c = CollisionShape2D.new()
-			$Ladders.add_child(c)
-			c.position = $World.map_to_local(cell)
-			var s = RectangleShape2D.new()
-			s.size = Vector2(8, 16)
-			c.shape = s
-
-func _on_item_picked_up():
-	score += 1
-	$PickupSound.play()
-
 func set_score(value):
 	score = value
 	score_changed.emit(score)
 
-func _on_door_entered(body):
-	GameState.next_level()
-	
 func _on_player_died():
 	GameState.restart()
 
-func _on_ladders_body_entered(body):
-	body.is_on_ladder = true
+func generate_level():
+	print(tilemap)
+	for y in range(height):
+		for x in range(width):
+			# Randomly decide if a platform should appear
+			if randf() < platform_chance:
+				var tile_id = 1  # Set platform tile (ID 1)
+				tilemap.set_cellv(Vector2(x, y), tile_id)  
+				
+				# Check if the tile has a collision shape
+				if has_collision(tile_id):
+					print("Tile at ", x, ",", y, " has a collision.")
+			else:
+				tilemap.set_cellv(Vector2(x, y), -1)  # Empty space tile (ID -1)
 
+	# Ensure the bottom row is always solid ground
+	for x in range(width):
+		var tile_id = 1  # Set ground tile ID to 1
+		tilemap.set_cellv(Vector2(x, height - 1), tile_id)
 
-func _on_ladders_body_exited(body):
-	body.is_on_ladder = false
+		# Check if ground tile has collision
+		if has_collision(tile_id):
+			print("Ground tile at", x, " has a collision.")
+
+# Function to check if the tile has a collision shape
+func has_collision(tile_id: int) -> bool:
+	# Get the collision shape count for the tile
+	if tilemap.tile_set.tile_get_shape_count(tile_id) > 0:
+		return true
+	return false
