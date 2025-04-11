@@ -8,57 +8,82 @@ signal score_changed
 @export var platform_chance = 0.3  # Chance for a platform to appear
 @export var tile_size = 32  # Tile size in pixels
 
-var score = 0 : set = set_score
-
-var item_scene = load("res://items/item.tscn")
-var door_scene = load("res://items/door.tscn")
+const WIDTH = 80  # Width of the cave in cells
+const HEIGHT = 60  # Height of the cave in cells
+const CELL_SIZE = 16  # Size of each cell in pixels
+var grid = []
 
 func _ready():
-	score = 0
-	$Player.reset($SpawnPoint.position)
-	set_camera_limits()
-	generate_level()
 	
-func set_camera_limits():
-	var map_size = $World.get_used_rect()
-	var cell_size = $World.tile_set.tile_size
-	$Player/Camera2D.limit_left = (map_size.position.x - 5) * cell_size.x
-	$Player/Camera2D.limit_right = (map_size.end.x + 5) * cell_size.x
+	randomize()  # Initialize the random number generator
+	initialize_grid()
+	generate_cave()
+	draw_cave()
+	$Player.reset($SpawnPoint.position)
 
-func set_score(value):
-	score = value
-	score_changed.emit(score)
+
 
 func _on_player_died():
 	GameState.restart()
 
-func generate_level():
-	print(tilemap)
-	for y in range(height):
-		for x in range(width):
-			# Randomly decide if a platform should appear
-			if randf() < platform_chance:
-				var tile_id = 1  # Set platform tile (ID 1)
-				tilemap.set_cell(Vector2(x, y), tile_id)  
-				
-				# Check if the tile has a collision shape
-				if has_collision(tile_id):
-					print("Tile at ", x, ",", y, " has a collision.")
-			else:
-				tilemap.set_cell(Vector2(x, y), -1)  # Empty space tile (ID -1)
+func initialize_grid():
+	# Create a 2D array filled with random walls and floors
+	for x in range(WIDTH):
+		grid.append([])
+		for y in range(HEIGHT):
+			# 45% chance of being a wall (true), 55% chance of being empty (false)
+			grid[x].append(randf() < 0.45)
 
-	# Ensure the bottom row is always solid ground
-	for x in range(width):
-		var tile_id = 1  # Set ground tile ID to 1
-		tilemap.set_cell(Vector2(x, height - 1), tile_id)
-
-		# Check if ground tile has collision
-		if has_collision(tile_id):
-			print("Ground tile at", x, " has a collision.")
-
-# Function to check if the tile has a collision shape
-func has_collision(tile_id: int) -> bool:
-	# Get the collision shape count for the tile
-	if tilemap.tile_set.tile_get_shape_count(tile_id) > 0:
-		return true
-	return false
+func generate_cave():
+	# Apply cellular automata rules to create cave-like structures
+	for i in range(4):  # Number of iterations
+		var new_grid = grid.duplicate(true)  # Create a deep copy of the grid
+		for x in range(WIDTH):
+			for y in range(HEIGHT):
+				var wall_count = count_neighboring_walls(x, y)
+				if grid[x][y]:  # If it's a wall
+					# Turn into empty space if not enough surrounding walls
+					new_grid[x][y] = wall_count > 3
+				else:  # If it's a floor
+					# Turn into a wall if too many surrounding walls
+					new_grid[x][y] = wall_count > 4
+		grid = new_grid  # Update the grid for the next iteration
+ 
+func count_neighboring_walls(x, y):
+	# Count the number of walls in the 8 neighboring cells
+	var count = 0
+	for i in range(-1, 2):
+		for j in range(-1, 2):
+			if i == 0 and j == 0:
+				continue  # Skip the center cell
+			var nx = x + i
+			var ny = y + j
+			# Check if the neighboring cell is out of bounds
+			if nx < 0 or nx >= WIDTH or ny < 0 or ny >= HEIGHT:
+				count += 1  # Count out-of-bounds as walls
+			elif grid[nx][ny]:
+				count += 1  # Count walls
+	return count
+ 
+func draw_cave():
+	# Visualize the cave using ColorRect nodes
+	for x in range(WIDTH):
+		for y in range(HEIGHT):
+			var cell = ColorRect.new()
+			cell.size = Vector2(CELL_SIZE, CELL_SIZE)
+			cell.position = Vector2(x * CELL_SIZE, y * CELL_SIZE)
+			cell.color = Color.BLACK if grid[x][y] else 1
+			add_child(cell)
+		 	# Add collision for black cells
+			if grid[x][y]:  # If the cell is black (truthy)
+				var body = StaticBody2D.new()
+				var collision = CollisionShape2D.new()
+				var shape = RectangleShape2D.new()
+					
+				shape.extents = Vector2(CELL_SIZE/2, CELL_SIZE/2)
+				collision.shape = shape
+				body.position = Vector2(x * CELL_SIZE + CELL_SIZE/2, 
+										  y * CELL_SIZE + CELL_SIZE/2)
+					
+				add_child(body)
+				body.add_child(collision)
