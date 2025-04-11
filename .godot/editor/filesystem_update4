@@ -6,3 +6,4 @@ res://player/player.tscn
 res://levels/levelbase.tscn
 res://main.tscn
 res://tile_setup.tscn
+res://player/player.gd

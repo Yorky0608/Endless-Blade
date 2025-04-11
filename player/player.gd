@@ -34,7 +34,6 @@ var can_be_damaged = true
 
 func _ready():
 	change_state(IDLE)
-	$AttackArea.body_entered.connect(_on_attack_area_body_entered)
 
 func reset(_position):
 	position = _position

@@ -1,17 +1,32 @@
-[gd_scene load_steps=7 format=3 uid="uid://m2qlmmp2r8bt"]
+[gd_scene load_steps=9 format=3 uid="uid://m2qlmmp2r8bt"]
 
 [ext_resource type="Script" path="res://levels/levelbase.gd" id="1_6oj8v"]
-[ext_resource type="TileSet" uid="uid://dhxw3f8l2saqn" path="res://assets/tilesets/tiles_world.tres" id="1_mcqs0"]
 [ext_resource type="PackedScene" uid="uid://bspy4rvse1yv8" path="res://player/player.tscn" id="2_igsqv"]
+[ext_resource type="Texture2D" uid="uid://772myfessv32" path="res://tileset/1 Tiles/Tile_55.png" id="2_jcyim"]
 [ext_resource type="AudioStream" uid="uid://3cgmotc6eyw2" path="res://assets/audio/Grasslands Theme.ogg" id="8_bqio8"]
 [ext_resource type="AudioStream" uid="uid://dlpqdmo4n4w6r" path="res://assets/audio/pickup2.ogg" id="9_sbkng"]
 [ext_resource type="PackedScene" uid="uid://vea3dq41ewm6" path="res://levels/background.tscn" id="9_x6j7o"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g8ne6"]
+texture = ExtResource("2_jcyim")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_5jbgn"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_g8ne6")
 
 [node name="LevelBase" type="Node2D"]
 script = ExtResource("1_6oj8v")
 
 [node name="World" type="TileMap" parent="."]
-tile_set = ExtResource("1_mcqs0")
+tile_set = SubResource("TileSet_5jbgn")
 format = 2
 layer_0/name = "world"
 
