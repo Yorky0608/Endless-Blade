@@ -1,9 +1,7 @@
 res://ui/title.tscn
-res://assets/tilesets/tiles_world.tres
-res://levels/levelbase.gd
 res://enemies/skelly.tscn
 res://player/player.tscn
 res://levels/levelbase.tscn
 res://main.tscn
 res://tile_setup.tscn
-res://player/player.gd
+res://levels/levelbase.gd
