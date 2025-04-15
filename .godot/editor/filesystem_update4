@@ -1,11 +1,11 @@
 res://ui/title.tscn
-res://assets/tilesets/tiles_world.tres
+res://levels/levelbase.gd
 res://enemies/skelly.tscn
 res://player/player.tscn
 res://levels/levelbase.tscn
 res://main.tscn
 res://tile_setup.tscn
-<<<<<<< Updated upstream
-res://levels/levelbase.gd
-=======
->>>>>>> Stashed changes
+res://player/player.gd
+res://levels/background.tscn
+res://levels/floor.tscn
+res://levels/wall.tscn

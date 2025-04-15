@@ -1,14 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://m2qlmmp2r8bt"]
+[gd_scene load_steps=5 format=4 uid="uid://cixquo1smg7bc"]
 
-[ext_resource type="Script" path="res://levels/levelbase.gd" id="1_6oj8v"]
-[ext_resource type="PackedScene" uid="uid://bspy4rvse1yv8" path="res://player/player.tscn" id="2_igsqv"]
-[ext_resource type="Texture2D" uid="uid://bm7s6wl5mv6mu" path="res://tileset/1 Tiles/Tileset.png" id="3_kq4h8"]
-[ext_resource type="AudioStream" uid="uid://3cgmotc6eyw2" path="res://assets/audio/Grasslands Theme.ogg" id="8_bqio8"]
-[ext_resource type="AudioStream" uid="uid://dlpqdmo4n4w6r" path="res://assets/audio/pickup2.ogg" id="9_sbkng"]
-[ext_resource type="PackedScene" uid="uid://vea3dq41ewm6" path="res://levels/background.tscn" id="9_x6j7o"]
+[ext_resource type="Script" path="res://levels/levelbase.gd" id="1_4483v"]
+[ext_resource type="Texture2D" uid="uid://bm7s6wl5mv6mu" path="res://tileset/1 Tiles/Tileset.png" id="2_rneie"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c3aqs"]
-texture = ExtResource("3_kq4h8")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_485ym"]
+texture = ExtResource("2_rneie")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -419,31 +415,18 @@ texture = ExtResource("3_kq4h8")
 15:17/0 = 0
 16:17/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_bbglp"]
+[sub_resource type="TileSet" id="TileSet_cpa6l"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_c3aqs")
+sources/1 = SubResource("TileSetAtlasSource_485ym")
 
-[node name="LevelBase" type="Node2D"]
-script = ExtResource("1_6oj8v")
-
-[node name="Player" parent="." instance=ExtResource("2_igsqv")]
-position = Vector2(215, -400)
-
-[node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(160, 126)
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_bqio8")
-autoplay = true
-
-[node name="PickupSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_sbkng")
-volume_db = -10.0
-
-[node name="Background" parent="." instance=ExtResource("9_x6j7o")]
+[node name="Floor" type="Node2D"]
+script = ExtResource("1_4483v")
 
 [node name="World" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_bbglp")
+tile_set = SubResource("TileSet_cpa6l")
 format = 2
 
-[connection signal="died" from="Player" to="." method="_on_player_died"]
+[node name="world" type="TileMapLayer" parent="World"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAATAA0AAQAJAAIAAAATAA4AAQAJAAMAAAAUAA0AAQAKAAIAAAAUAA4AAQAKAAMAAAAVAA0AAQALAAIAAAAVAA4AAQALAAMAAAAWAA0AAQAMAAIAAAAWAA4AAQAMAAMAAAAXAA0AAQANAAIAAAAXAA4AAQANAAMAAAAYAA0AAQAOAAIAAAAYAA4AAQAOAAMAAAA=")
+tile_set = SubResource("TileSet_cpa6l")
