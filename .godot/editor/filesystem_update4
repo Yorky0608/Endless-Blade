@@ -9,3 +9,5 @@ res://player/player.gd
 res://levels/background.tscn
 res://levels/floor.tscn
 res://levels/wall.tscn
+res://levels/chunk.tscn
+res://levels/chunkup.tscn
