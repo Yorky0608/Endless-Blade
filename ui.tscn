@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://cykp8bxmpd8hl"]
+
+[ext_resource type="Script" path="res://ui.gd" id="1_ttjfx"]
+[ext_resource type="Texture2D" uid="uid://1fx24rn1vasi" path="res://assets/download-removebg-preview.png" id="2_m7qav"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vy8r4"]
+font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_v83ku"]
+font_size = 30
+
+[node name="UI" type="CanvasLayer" groups=["ui"]]
+script = ExtResource("1_ttjfx")
+
+[node name="Message" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -48.5
+offset_right = 233.0
+offset_bottom = 48.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Get Ready!"
+label_settings = SubResource("LabelSettings_vy8r4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 20.0
+offset_right = 245.0
+offset_bottom = 225.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="VBoxContainer"]
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+texture_progress = ExtResource("2_m7qav")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 50.0
+offset_top = 20.0
+offset_right = 163.0
+offset_bottom = 70.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_v83ku")

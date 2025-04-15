@@ -86,6 +86,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4hio6")
 
+[node name="Background" parent="." instance=ExtResource("4_yw284")]
+
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -125,5 +127,3 @@ autoplay = "intro"
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_12xq0")
 autoplay = true
-
-[node name="Background" parent="." instance=ExtResource("4_yw284")]

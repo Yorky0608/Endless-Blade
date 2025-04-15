@@ -1,68 +1,82 @@
 extends Node2D
 
-# Preload your chunk scenes
-const SPAWN_CHUNK = preload("res://levels/spawn_chunk.tscn")
-const CHUNK_UP = preload("res://levels/chunkup.tscn")
-const CHUNK_DOWN = preload("res://levels/chunk_down.tscn")
+class_name LevelManager
 
-# Chunk size (should match your tilemap dimensions)
-const CHUNK_WIDTH = 1148  # Adjust based on your chunk size
-const CHUNK_HEIGHT = 648  # Adjust based on your chunk size
+## Chunk configuration - EDIT THESE TO MATCH YOUR GAME ##
+const CHUNK_SCENES := [
+	preload("res://levels/spawn_chunk.tscn"),
+	preload("res://levels/chunk_down.tscn"),
+	preload("res://levels/chunkup.tscn")
+	# Add more chunks here as you create them
+]
+const CHUNK_WIDTH = 1152  # Must match your chunk scene width
+const GROUND_Y = 500      # Y-position where chunks will spawn
+const LOAD_DISTANCE = 2   # Number of chunks to load ahead/behind player
+const START_CHUNK_X = 0   # Initial chunk position
 
-# Player reference
-var player: Node2D
-var current_chunk_position: Vector2 = Vector2.ZERO
-var loaded_chunks = {}
+## Internal variables ##
+var loaded_chunks = {}    # Dictionary tracking spawned chunks {x_index: chunk_instance}
+var player_ref: CharacterBody2D
+var spawn_marker_position: Vector2
+var player_health = 20
 
 func _ready():
-	# Load the initial spawn chunk
-	load_chunk(Vector2.ZERO, SPAWN_CHUNK)
+	# Load spawn chunk first
+	_spawn_chunk(0, true)
 	
-	# Find the player node
-	player = $Entities/Player
+	# Position player at spawn marker
+	player_ref = get_node_or_null("Entities/Player")
+	if spawn_marker_position:
+		player_ref.position = spawn_marker_position
+	
+	# Load initial chunks
+	_on_player_chunk_changed(START_CHUNK_X)
+	
+	$UI.show_message("Get Ready!")
 
-func _on_player_chunk_changed(new_chunk_pos):
-	# Handle when player moves to a new chunk
-	update_chunks(new_chunk_pos)
+func _spawn_chunk(x_index: int, is_spawn_chunk: bool = false):
+	var chunk_scene = CHUNK_SCENES[0 if is_spawn_chunk else randi() % CHUNK_SCENES.size()]
+	var new_chunk = chunk_scene.instantiate()
 
-func update_chunks(player_chunk_pos):
-	# Unload chunks that are too far away
-	unload_distant_chunks(player_chunk_pos)
-	
-	# Load nearby chunks
-	for x in range(player_chunk_pos.x - 1, player_chunk_pos.x + 2):
-		for y in range(player_chunk_pos.y - 1, player_chunk_pos.y + 2):
-			var chunk_pos = Vector2(x, y)
-			if not loaded_chunks.has(chunk_pos):
-				load_random_chunk(chunk_pos)
+	new_chunk.position = Vector2(x_index * CHUNK_WIDTH, 0)
+	add_child(new_chunk)
+	loaded_chunks[x_index] = new_chunk
 
-func load_random_chunk(position: Vector2):
-	# Randomly choose a chunk type (you can add more logic here)
-	var chunk_scene
-	var rand_val = randf()
-	
-	if rand_val < 0.4:
-		chunk_scene = CHUNK_UP
-	elif rand_val < 0.8:
-		chunk_scene = CHUNK_DOWN
-	else:
-		chunk_scene = SPAWN_CHUNK  # or create more chunk types
-	
-	load_chunk(position, chunk_scene)
+	# If this is the spawn chunk, find its marker
+	if is_spawn_chunk:
+		var marker = new_chunk.get_node_or_null("SpawnMarker")
+		if marker:
+			spawn_marker_position = marker.global_position
+			print("Found spawn marker at: ", spawn_marker_position)
+		else:
+			push_error("WARNING: Spawn chunk missing SpawnMarker")
+			spawn_marker_position = Vector2(x_index * CHUNK_WIDTH + 100, 230)  # Fallback position
 
-func load_chunk(position: Vector2, chunk_scene):
-	var chunk_instance = chunk_scene.instantiate()  # Fixed: .instantiate() instead of .instance()
-	chunk_instance.position = Vector2(position.x * CHUNK_WIDTH, position.y * CHUNK_HEIGHT)
-	add_child(chunk_instance)
-	loaded_chunks[position] = chunk_instance
+func _on_player_chunk_changed(current_chunk_x: int):
+	# Unload chunks outside loading distance
+	_unload_distant_chunks(current_chunk_x)
+	
+	# Load new chunks around player
+	_load_nearby_chunks(current_chunk_x)
 
-func unload_distant_chunks(player_chunk_pos):
-	var chunks_to_unload = []
+func _load_nearby_chunks(center_x: int):
+	# Load chunks in range [center-LOAD_DISTANCE, center+LOAD_DISTANCE]
+	for x in range(center_x - LOAD_DISTANCE, center_x + LOAD_DISTANCE + 1):
+		if not loaded_chunks.has(x):
+			_spawn_chunk(x)
+
+func _unload_distant_chunks(center_x: int):
+	var chunks_to_unload := []
 	
-	for chunk_pos in loaded_chunks:
-		if abs(chunk_pos.x - player_chunk_pos.x) > 2 or abs(chunk_pos.y - player_chunk_pos.y) > 2:
-			chunks_to_unload.append(chunk_pos)
+	# Find chunks outside loading distance
+	for x in loaded_chunks:
+		if abs(x - center_x) > LOAD_DISTANCE:
+			chunks_to_unload.append(x)
 	
-	for chunk_pos in chunks_to_unload:
-		loaded_chunks[chunk_pos].queue_free()
-		loaded_chunks.erase(chunk_pos)
+	# Remove those chunks
+	for x in chunks_to_unload:
+		loaded_chunks[x].queue_free()
+		loaded_chunks.erase(x)
+
+func _on_player_died():
+	GameState.restart()

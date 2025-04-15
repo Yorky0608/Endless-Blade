@@ -1,7 +1,14 @@
+CollisionShape2D
+Area2D
+Timer
+Label
+Control
+HBoxContainer
+Container
+MarginContainer
+TextureProgressBar
 Marker2D
 Node
 Node2D
 TileMap
 TileMapLayer
-Timer
-Area2D

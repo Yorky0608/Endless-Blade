@@ -1,12 +1,15 @@
 extends CharacterBody2D
 
-signal life_changed
 signal died
-signal chunk_changed(new_chunk_pos)
+signal chunk_changed(current_chunk_x: int)  # Changed to only track x-axis
+signal update_health_bar(new_health)
 
 @export var gravity = 750
 @export var run_speed = 150
 @export var jump_speed = -300
+@export var invincibility_time = 1.0
+
+var invincible = false
 
 var walk_texture = preload("res://sprites/2/Walk.png")
 var attack1_texture = preload("res://sprites/2/Attack1.png")
@@ -28,11 +31,9 @@ var state = IDLE
 var life = 100
 var can_be_damaged = true
 
-# Chunk size should match the one in level.gd
-const CHUNK_WIDTH = 1024
-const CHUNK_HEIGHT = 600
-
-var current_chunk = Vector2.ZERO
+# Chunk tracking (simplified for horizontal only)
+const CHUNK_WIDTH = 1152  # Must match level.gd value
+var current_chunk_x = 0  # Now just tracking x-axis
 
 @export var damage: int = 25  # The damage this attack deals
 
@@ -57,11 +58,17 @@ func reset(_position):
 	show()
 	change_state(IDLE)
 	life = 100
+	current_chunk_x = floor(position.x / CHUNK_WIDTH)
 
+# Modify hurt function:
 func hurt():
 	if state != HURT:
 		$HurtSound.play()
 		change_state(HURT)
+		# Flash effect
+		$Sprite2D.modulate = Color.RED
+		await get_tree().create_timer(0.1).timeout
+		$Sprite2D.modulate = Color.WHITE
 
 func get_input():
 	if state == HURT:
@@ -127,7 +134,7 @@ func change_state(new_state):
 			$Sprite2D.texture = hurt_texture
 			$AnimationPlayer.play("Hurt")
 			velocity.y = -200
-			velocity.x = -100 * sign(velocity.x)
+			velocity.x = -200 * sign(velocity.x)
 			change_state(IDLE)
 			if life <= 0:
 				change_state(DEAD)
@@ -164,30 +171,31 @@ func _physics_process(delta):
 		change_state(IDLE)
 		$Dust.emitting = true
 	
-	# Check if chunk changed
-	var new_chunk = Vector2(
-		floor(position.x / CHUNK_WIDTH),
-		floor(position.y / CHUNK_HEIGHT)
-	)
-	
-	if new_chunk != current_chunk:
-		current_chunk = new_chunk
-		emit_signal("chunk_changed", current_chunk)
+	# Simplified chunk tracking - only x-axis
+	var new_chunk_x = floor(position.x / CHUNK_WIDTH)
+	if new_chunk_x != current_chunk_x:
+		current_chunk_x = new_chunk_x
+		emit_signal("chunk_changed", current_chunk_x)
 
 func take_damage(amount):
-	if not can_be_damaged:
+	if invincible or state == DEAD:
 		return
+
 	life -= amount
+	update_health_bar.emit(life)
 	hurt()
-	can_be_damaged = false
-	await get_tree().create_timer(1.0).timeout  # 1 second of invincibility
-	can_be_damaged = true
 
-func set_life(value):
-	life = value
-	life_changed.emit(life)
+	invincible = true
+	$InvincibilityTimer.start(invincibility_time)
+	await $InvincibilityTimer.timeout
+	invincible = false
+	
+	if life <= 0:
+		change_state(DEAD)
 
-func _on_attack_area_body_entered(body: Node2D) -> void:
+
+
+
+func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
-		# Apply damage to the enemy
-		body.apply_damage(damage)
+		take_damage(body.contact_damage)
