@@ -1,58 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://vea3dq41ewm6"]
+[gd_scene load_steps=2 format=3 uid="uid://vea3dq41ewm6"]
 
-[ext_resource type="Texture2D" uid="uid://blqqetvs72c2b" path="res://background/5/3.png" id="2_1fccr"]
-[ext_resource type="Texture2D" uid="uid://b4gwr2t2yta4n" path="res://background/5/4.png" id="3_8ewmp"]
-[ext_resource type="Texture2D" uid="uid://duvl73ga7frkf" path="res://background/5/5.png" id="4_q72ib"]
-[ext_resource type="Texture2D" uid="uid://bskwe3rk7h0vd" path="res://background/5/6.png" id="5_r327n"]
+[ext_resource type="Texture2D" uid="uid://ddw40v0sirf8k" path="res://background/5/7.png" id="1_i64jy"]
 
 [node name="Background" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.6, 2.08165e-12)
 motion_mirroring = Vector2(880, 2.08165e-12)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture_repeat = 3
-position = Vector2(535, -325)
+position = Vector2(342, 148)
 scale = Vector2(1.27813, 1.77989)
-texture = ExtResource("2_1fccr")
+texture = ExtResource("1_i64jy")
 region_enabled = true
 region_rect = Rect2(2.08165e-12, 2.08165e-12, 880, 368)
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.2, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-position = Vector2(-24, -651)
-scale = Vector2(3.48264, 2.01235)
-texture = ExtResource("2_1fccr")
-centered = false
-
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.2, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-position = Vector2(-26, -657)
-scale = Vector2(3.48958, 2.02161)
-texture = ExtResource("3_8ewmp")
-centered = false
-
-[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.2, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
-position = Vector2(-28, -655)
-scale = Vector2(3.48958, 2.02469)
-texture = ExtResource("4_q72ib")
-centered = false
-
-[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.2, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
-position = Vector2(-26, -654)
-scale = Vector2(3.48958, 2.01852)
-texture = ExtResource("5_r327n")
-centered = false

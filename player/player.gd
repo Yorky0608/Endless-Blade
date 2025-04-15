@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal life_changed
 signal died
+signal chunk_changed(new_chunk_pos)
 
 @export var gravity = 750
 @export var run_speed = 150
@@ -25,14 +26,31 @@ var walk_attack2_texture = preload("res://sprites/2/WalkAttack2.png")
 
 enum {IDLE, RUN, JUMP, HURT, DEAD, ATTACK}
 var state = IDLE
-var last_floor = false
-var is_on_ladder = false
 var life = 100
 var can_be_damaged = true
+
+# Chunk size should match the one in level.gd
+const CHUNK_WIDTH = 1024
+const CHUNK_HEIGHT = 600
+
+var current_chunk = Vector2.ZERO
 
 @export var damage: int = 25  # The damage this attack deals
 
 func _ready():
+	# Get the root Viewport (not Window)
+	var viewport = get_viewport()
+
+	# For pixel art games (disable anti-aliasing)
+	viewport.msaa_2d = Viewport.MSAA_DISABLED  # Correct property name in Godot 4.3
+	viewport.msaa_3d = Viewport.MSAA_DISABLED  # If using 3D elements
+
+	# Enable nearest-neighbor filtering for crisp pixels
+	viewport.canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
+
+	# Disable FXAA (another form of anti-aliasing)
+	viewport.screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
+	
 	change_state(IDLE)
 
 func reset(_position):
@@ -146,7 +164,16 @@ func _physics_process(delta):
 	if state == JUMP and is_on_floor():
 		change_state(IDLE)
 		$Dust.emitting = true
-	last_floor = is_on_floor()
+	
+	# Check if chunk changed
+	var new_chunk = Vector2(
+		floor(position.x / CHUNK_WIDTH),
+		floor(position.y / CHUNK_HEIGHT)
+	)
+	
+	if new_chunk != current_chunk:
+		current_chunk = new_chunk
+		emit_signal("chunk_changed", current_chunk)
 
 func take_damage(amount):
 	if not can_be_damaged:
