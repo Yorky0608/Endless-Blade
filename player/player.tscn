@@ -314,6 +314,7 @@ collision_layer = 2
 collision_mask = 13
 floor_snap_length = 8.0
 script = ExtResource("1_b3yer")
+jump_speed = -350
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(5, -21)

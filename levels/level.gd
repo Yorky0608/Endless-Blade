@@ -6,8 +6,8 @@ const CHUNK_UP = preload("res://levels/chunkup.tscn")
 const CHUNK_DOWN = preload("res://levels/chunk_down.tscn")
 
 # Chunk size (should match your tilemap dimensions)
-const CHUNK_WIDTH = 1024  # Adjust based on your chunk size
-const CHUNK_HEIGHT = 600  # Adjust based on your chunk size
+const CHUNK_WIDTH = 1148  # Adjust based on your chunk size
+const CHUNK_HEIGHT = 648  # Adjust based on your chunk size
 
 # Player reference
 var player: Node2D

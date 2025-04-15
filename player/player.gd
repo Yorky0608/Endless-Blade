@@ -7,7 +7,6 @@ signal chunk_changed(new_chunk_pos)
 @export var gravity = 750
 @export var run_speed = 150
 @export var jump_speed = -300
-@export var climb_speed = 50
 
 var walk_texture = preload("res://sprites/2/Walk.png")
 var attack1_texture = preload("res://sprites/2/Attack1.png")
