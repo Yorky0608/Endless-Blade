@@ -32,7 +32,7 @@ func _ready():
 	# Load initial chunks
 	_on_player_chunk_changed(START_CHUNK_X)
 	
-	$UI.show_message("Get Ready!")
+	$Entities/Player/UI.show_message("Get Ready!")
 
 func _spawn_chunk(x_index: int, is_spawn_chunk: bool = false):
 	var chunk_scene = CHUNK_SCENES[0 if is_spawn_chunk else randi() % CHUNK_SCENES.size()]

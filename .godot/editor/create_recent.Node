@@ -1,5 +1,6 @@
-CollisionShape2D
 Area2D
+CollisionShape2D
+VBoxContainer
 Timer
 Label
 Control
@@ -11,4 +12,3 @@ Marker2D
 Node
 Node2D
 TileMap
-TileMapLayer

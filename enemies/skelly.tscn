@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnu0rceo3bl7m"]
+[gd_scene load_steps=10 format=3 uid="uid://dnu0rceo3bl7m"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_amvso"]
 [ext_resource type="Texture2D" uid="uid://dwd7f51hik30e" path="res://monsters3/Skeleton/Walk.png" id="2_aoooa"]
 [ext_resource type="AudioStream" uid="uid://dixa2cgepuv6k" path="res://assets/audio/enemy_hit.ogg" id="3_fttbg"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yaj4j"]
+size = Vector2(35, 67.5001)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24npj"]
-size = Vector2(36, 70)
+size = Vector2(35, 67.5)
 
 [sub_resource type="Animation" id="Animation_dnkgi"]
 length = 0.001
@@ -78,17 +81,19 @@ texture = ExtResource("2_aoooa")
 hframes = 8
 frame = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-8, 17)
+[node name="HitBox" type="Area2D" parent="." groups=["enemies"]]
 scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_24npj")
-
-[node name="HitBox" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 19
+collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-8, 17)
+position = Vector2(-7.5, 16.25)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_yaj4j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7.5, 16.25)
+scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_24npj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -101,5 +106,3 @@ speed_scale = 3.0
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_fttbg")
 volume_db = -10.0
-
-[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

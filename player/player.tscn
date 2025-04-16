@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://bspy4rvse1yv8"]
+[gd_scene load_steps=27 format=3 uid="uid://bspy4rvse1yv8"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_b3yer"]
 [ext_resource type="Texture2D" uid="uid://55kc7plv4lg1" path="res://sprites/2/Attack2.png" id="2_jkdam"]
 [ext_resource type="AudioStream" uid="uid://cj78mf5ulvfyu" path="res://assets/audio/jump4.ogg" id="3_cfmin"]
 [ext_resource type="AudioStream" uid="uid://cjf1tattajnal" path="res://assets/audio/hurt1.ogg" id="3_wy6fc"]
+[ext_resource type="PackedScene" uid="uid://cykp8bxmpd8hl" path="res://ui.tscn" id="5_rjh85"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n57ph"]
 size = Vector2(13, 24)
@@ -307,7 +308,7 @@ _data = {
 colors = PackedColorArray(1, 0.874624, 0.466843, 1, 1, 0.87451, 0.466667, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1o32"]
-size = Vector2(24.5, 20.25)
+size = Vector2(34.25, 20.25)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -316,12 +317,18 @@ floor_snap_length = 8.0
 script = ExtResource("1_b3yer")
 jump_speed = -350
 
+[node name="UI" parent="." instance=ExtResource("5_rjh85")]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(5, -21)
 texture = ExtResource("2_jkdam")
 hframes = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." groups=["player"]]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-0.5, -12)
 shape = SubResource("RectangleShape2D_n57ph")
 
@@ -360,16 +367,20 @@ scale_amount_max = 3.0
 color_ramp = SubResource("Gradient_ad3dv")
 
 [node name="AttackArea" type="Area2D" parent="." groups=["player_attack"]]
-collision_layer = 18
+collision_layer = 16
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(18, -13.875)
+position = Vector2(22.875, -13.875)
 shape = SubResource("RectangleShape2D_w1o32")
 debug_color = Color(0.868136, 0.300206, 0.48499, 0.42)
 
 [node name="InvincibilityTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -12)
+shape = SubResource("RectangleShape2D_n57ph")
 
 [connection signal="chunk_changed" from="." to="." method="_on_chunk_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -62,15 +62,12 @@ func reset(_position):
 
 # Modify hurt function:
 func hurt():
-	life = 27
-	update_health_bar.emit(life)
+	var ui = get_tree().get_first_node_in_group("ui")
+	if ui:
+		ui.update_health_bar(life)
 	if state != HURT:
 		$HurtSound.play()
 		change_state(HURT)
-		# Flash effect
-		$Sprite2D.modulate = Color.RED
-		await get_tree().create_timer(0.1).timeout
-		$Sprite2D.modulate = Color.WHITE
 
 func get_input():
 	if state == HURT:
@@ -106,8 +103,6 @@ func get_input():
 	if attack and not right and not left and not jump:
 		$Sprite2D.set_frame(0)
 		change_state(ATTACK)
-	if state == ATTACK and !$AnimationPlayer.is_playing():
-		change_state(IDLE)
 	# RUN transitions to IDLE when standing still
 	if state == RUN and attack:
 		$AnimationPlayer.speed_scale = 5.0
@@ -135,11 +130,8 @@ func change_state(new_state):
 			$Sprite2D.set_hframes(4)
 			$Sprite2D.texture = hurt_texture
 			$AnimationPlayer.play("Hurt")
-			velocity.y = -200
-			velocity.x = -200 * sign(velocity.x)
+			await $AnimationPlayer.animation_finished
 			change_state(IDLE)
-			if life <= 0:
-				change_state(DEAD)
 		JUMP:
 			$Sprite2D.texture = jump_texture
 			$Sprite2D.set_hframes(8)
@@ -148,6 +140,7 @@ func change_state(new_state):
 			$Sprite2D.set_hframes(8)
 			$Sprite2D.texture = death_texture
 			$AnimationPlayer.play("Death")
+			await $AnimationPlayer.animation_finished
 			died.emit()
 			hide()
 		ATTACK:
@@ -159,6 +152,7 @@ func change_state(new_state):
 			await $AnimationPlayer.animation_finished
 			$AttackArea.monitoring = false
 			$AnimationPlayer.speed_scale = 3.0
+			change_state(IDLE)
 
 func _physics_process(delta):    
 	velocity.y += gravity * delta
@@ -167,10 +161,6 @@ func _physics_process(delta):
 	move_and_slide()
 	if state == HURT:
 		return
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		if collision.get_collider().is_in_group("danger"):
-			hurt()
 	
 	if state == JUMP and is_on_floor():
 		change_state(IDLE)
@@ -187,7 +177,7 @@ func take_damage(amount):
 		return
 
 	life -= amount
-	update_health_bar.emit(life)
+	print(life, amount)
 	hurt()
 
 	invincible = true
@@ -197,10 +187,3 @@ func take_damage(amount):
 	
 	if life <= 0:
 		change_state(DEAD)
-
-
-
-
-func _on_hit_box_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemies"):
-		take_damage(body.contact_damage)
