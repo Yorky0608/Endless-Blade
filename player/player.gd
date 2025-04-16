@@ -25,6 +25,7 @@ var run_attack1_texture = preload("res://sprites/2/RunAttack1.png")
 var run_attack2_texture = preload("res://sprites/2/RunAttack2.png")
 var walk_attack1_texture = preload("res://sprites/2/WalkAttack1.png")
 var walk_attack2_texture = preload("res://sprites/2/WalkAttack2.png")
+var death_texture = preload("res://sprites/2/Death.png")
 
 enum {IDLE, RUN, JUMP, HURT, DEAD, ATTACK}
 var state = IDLE
@@ -145,6 +146,9 @@ func change_state(new_state):
 			$Sprite2D.set_hframes(8)
 			$AnimationPlayer.play("Jump")
 		DEAD:
+			$Sprite2D.set_hframes(8)
+			$Sprite2D.texture = death_texture
+			$AnimationPlayer.play("Death")
 			died.emit()
 			hide()
 		ATTACK:
