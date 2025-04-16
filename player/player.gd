@@ -62,6 +62,8 @@ func reset(_position):
 
 # Modify hurt function:
 func hurt():
+	life = 27
+	update_health_bar.emit(life)
 	if state != HURT:
 		$HurtSound.play()
 		change_state(HURT)
