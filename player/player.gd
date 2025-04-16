@@ -25,7 +25,6 @@ var run_attack1_texture = preload("res://sprites/2/RunAttack1.png")
 var run_attack2_texture = preload("res://sprites/2/RunAttack2.png")
 var walk_attack1_texture = preload("res://sprites/2/WalkAttack1.png")
 var walk_attack2_texture = preload("res://sprites/2/WalkAttack2.png")
-var death_texture = preload("res://sprites/2/Death.png")
 
 enum {IDLE, RUN, JUMP, HURT, DEAD, ATTACK}
 var state = IDLE
