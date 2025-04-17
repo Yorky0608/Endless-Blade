@@ -1,5 +1,6 @@
-Area2D
 CollisionShape2D
+Node2D
+Area2D
 VBoxContainer
 Timer
 Label
@@ -10,5 +11,4 @@ MarginContainer
 TextureProgressBar
 Marker2D
 Node
-Node2D
 TileMap

@@ -11,7 +11,7 @@ func _ready():
 
 func update_score(value):
 	current_score = value
-	score_label.text = "SScore: %s" % current_score
+	score_label.text = "Score: %s" % current_score
 
 func update_health_bar(value):
 	health_bar.value = value

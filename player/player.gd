@@ -38,6 +38,8 @@ var current_chunk_x = 0  # Now just tracking x-axis
 @export var damage: int = 25  # The damage this attack deals
 
 func _ready():
+	$AttackPivot/AttackArea.monitoring = false
+	
 	# Get the root Viewport (not Window)
 	var viewport = get_viewport()
 
@@ -82,9 +84,11 @@ func get_input():
 	if right:
 		velocity.x += run_speed
 		$Sprite2D.flip_h = false
+		$Sprite2D.offset.x = 0
 	if left:
 		velocity.x -= run_speed
 		$Sprite2D.flip_h = true
+		$Sprite2D.offset.x = -11
 	# only allow jumping when on the ground
 	if jump and is_on_floor():
 		$JumpSound.play()
@@ -106,14 +110,15 @@ func get_input():
 	# RUN transitions to IDLE when standing still
 	if state == RUN and attack:
 		$AnimationPlayer.speed_scale = 5.0
-		$AttackArea.monitoring = true
+		$AttackPivot/AttackArea.monitoring = true
 		$Sprite2D.texture = run_attack2_texture
 		$Sprite2D.set_hframes(6)
 		$AnimationPlayer.play("RunAttack2")
 		await $AnimationPlayer.animation_finished
-		$AttackArea.monitoring = false
+		$AttackPivot/AttackArea.monitoring = false
 		$AnimationPlayer.speed_scale = 3.0
 		change_state(RUN)
+	$AttackPivot.scale.x = -1 if $Sprite2D.flip_h else 1
 
 func change_state(new_state):
 	state = new_state
@@ -145,16 +150,17 @@ func change_state(new_state):
 			hide()
 		ATTACK:
 			$AnimationPlayer.speed_scale = 5.0
-			$AttackArea.monitoring = true
+			$AttackPivot/AttackArea.monitoring = true
 			$Sprite2D.texture = attack2_texture
 			$Sprite2D.set_hframes(6)
 			$AnimationPlayer.play("Attack2")
 			await $AnimationPlayer.animation_finished
-			$AttackArea.monitoring = false
+			$AttackPivot/AttackArea.monitoring = false
 			$AnimationPlayer.speed_scale = 3.0
 			change_state(IDLE)
 
-func _physics_process(delta):    
+func _physics_process(delta):
+	$AttackPivot/AttackArea/CollisionShape2D.debug_color = Color.YELLOW
 	velocity.y += gravity * delta
 	get_input()
 	
@@ -187,3 +193,14 @@ func take_damage(amount):
 	
 	if life <= 0:
 		change_state(DEAD)
+
+func _on_attack_area_area_entered(area: Area2D):
+	print("Attack area hit something:", area.name)
+	if area.is_in_group("enemy_hitbox"):
+		var node = area
+		while node:
+			if node.has_method("apply_damage"):
+				print("Applying damage to:", node.name)
+				node.apply_damage(damage)
+				break
+			node = node.get_parent()

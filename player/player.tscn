@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bspy4rvse1yv8"]
+[gd_scene load_steps=28 format=3 uid="uid://bspy4rvse1yv8"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_b3yer"]
 [ext_resource type="Texture2D" uid="uid://55kc7plv4lg1" path="res://sprites/2/Attack2.png" id="2_jkdam"]
@@ -6,8 +6,14 @@
 [ext_resource type="AudioStream" uid="uid://cjf1tattajnal" path="res://assets/audio/hurt1.ogg" id="3_wy6fc"]
 [ext_resource type="PackedScene" uid="uid://cykp8bxmpd8hl" path="res://ui.tscn" id="5_rjh85"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1o32"]
+size = Vector2(18.125, 25.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8agkg"]
+size = Vector2(17, 25)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n57ph"]
-size = Vector2(13, 24)
+size = Vector2(19, 26.5)
 
 [sub_resource type="Animation" id="Animation_i3pqv"]
 resource_name = "Attack1"
@@ -307,9 +313,6 @@ _data = {
 [sub_resource type="Gradient" id="Gradient_ad3dv"]
 colors = PackedColorArray(1, 0.874624, 0.466843, 1, 1, 0.87451, 0.466667, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1o32"]
-size = Vector2(34.25, 20.25)
-
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 13
@@ -317,20 +320,35 @@ floor_snap_length = 8.0
 script = ExtResource("1_b3yer")
 jump_speed = -350
 
+[node name="AttackPivot" type="Node2D" parent="."]
+
+[node name="AttackArea" type="Area2D" parent="AttackPivot"]
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackPivot/AttackArea" groups=["player_attack"]]
+position = Vector2(17.9375, -14.4375)
+shape = SubResource("RectangleShape2D_w1o32")
+debug_color = Color(0.868136, 0.300206, 0.48499, 0.42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -12.5)
+shape = SubResource("RectangleShape2D_8agkg")
+
+[node name="HitBox" type="Area2D" parent="." groups=["player"]]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" groups=["player"]]
+position = Vector2(-0.5, -12.75)
+shape = SubResource("RectangleShape2D_n57ph")
+
 [node name="UI" parent="." instance=ExtResource("5_rjh85")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(5, -21)
 texture = ExtResource("2_jkdam")
 hframes = 6
-
-[node name="HitBox" type="Area2D" parent="." groups=["player"]]
-collision_layer = 2
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-0.5, -12)
-shape = SubResource("RectangleShape2D_n57ph")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -366,21 +384,10 @@ initial_velocity_max = 10.0
 scale_amount_max = 3.0
 color_ramp = SubResource("Gradient_ad3dv")
 
-[node name="AttackArea" type="Area2D" parent="." groups=["player_attack"]]
-collision_layer = 16
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(22.875, -13.875)
-shape = SubResource("RectangleShape2D_w1o32")
-debug_color = Color(0.868136, 0.300206, 0.48499, 0.42)
-
 [node name="InvincibilityTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -12)
-shape = SubResource("RectangleShape2D_n57ph")
-
 [connection signal="chunk_changed" from="." to="." method="_on_chunk_changed"]
+[connection signal="area_entered" from="AttackPivot/AttackArea" to="." method="_on_attack_area_area_entered"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
