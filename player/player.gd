@@ -165,6 +165,7 @@ func _physics_process(delta):
 	get_input()
 	
 	move_and_slide()
+	
 	if state == HURT:
 		return
 	
@@ -178,18 +179,28 @@ func _physics_process(delta):
 		current_chunk_x = new_chunk_x
 		emit_signal("chunk_changed", current_chunk_x)
 
-func take_damage(amount):
+func take_damage(node, amount):
+	#invincible = true
 	if invincible or state == DEAD:
+		velocity.x = 50
 		return
-
+	if not node.get_node("Sprite2D").flip_h:
+		velocity.x = 100
+		velocity.y = -100
+	else:
+		velocity.x = -100
+		velocity.y = -100
 	life -= amount
 	print(life, amount)
 	hurt()
 
 	invincible = true
+	$HitBox.set_deferred("monitoring", false)
+	print($HitBox.monitoring)
 	$InvincibilityTimer.start(invincibility_time)
 	await $InvincibilityTimer.timeout
 	invincible = false
+	$HitBox.monitoring = true
 	
 	if life <= 0:
 		change_state(DEAD)
@@ -203,4 +214,11 @@ func _on_attack_area_area_entered(area: Area2D):
 				print("Applying damage to:", node.name)
 				node.apply_damage(damage)
 				break
-			node = node.get_parent()
+			node = node.get_parent() 
+
+
+func _on_hit_box_area_entered(area: Area2D) -> void:
+	print("Touched Enemy:", area.name)
+	if area.is_in_group("enemy_hitbox"):
+		var node = area.get_parent()
+		take_damage(node, node.contact_damage)

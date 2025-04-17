@@ -8,5 +8,5 @@ res://levels/chunk_down.tscn
 res://levels/level.tscn
 res://levels/spawn_chunk.tscn
 res://ui.tscn
-res://enemies/enemy.gd
 res://player/player.gd
+res://enemies/enemy.gd
