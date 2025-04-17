@@ -94,6 +94,7 @@ collision_mask = 18
 position = Vector2(-7.5, 16.25)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_yaj4j")
+debug_color = Color(0, 0.628232, 0.494345, 0.42)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

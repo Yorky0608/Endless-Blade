@@ -342,7 +342,7 @@ collision_mask = 32
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" groups=["player"]]
 position = Vector2(-0.5, -12.75)
 shape = SubResource("RectangleShape2D_n57ph")
-debug_color = Color(0.936033, 0.214981, 0.348435, 0.42)
+debug_color = Color(2.02149e-06, 0.635451, 0.417037, 0.42)
 
 [node name="UI" parent="." instance=ExtResource("5_rjh85")]
 

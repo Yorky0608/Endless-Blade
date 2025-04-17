@@ -53,12 +53,12 @@ func _ready():
 	# Disable FXAA (another form of anti-aliasing)
 	viewport.screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 	
-	change_state(IDLE)
+	change_state(IDLE, idle_texture, "Idle")
 
 func reset(_position):
 	position = _position
 	show()
-	change_state(IDLE)
+	change_state(IDLE, idle_texture, "Idle")
 	life = 100
 	current_chunk_x = floor(position.x / CHUNK_WIDTH)
 
@@ -69,7 +69,7 @@ func hurt():
 		ui.update_health_bar(life)
 	if state != HURT:
 		$HurtSound.play()
-		change_state(HURT)
+		change_state(HURT, hurt_texture, "Hurt")
 
 func get_input():
 	if state == HURT:
@@ -92,75 +92,69 @@ func get_input():
 	# only allow jumping when on the ground
 	if jump and is_on_floor():
 		$JumpSound.play()
-		change_state(JUMP)
+		change_state(JUMP, jump_texture, "Jump")
 		velocity.y = jump_speed
 	# IDLE transitions to RUN when moving
 	if state == IDLE and velocity.x != 0:
-		change_state(RUN)
+		change_state(RUN, run_texture, "Run")
 	# RUN transitions to IDLE when standing still
 	if state == RUN and velocity.x == 0:
-		change_state(IDLE)
+		change_state(IDLE, idle_texture, "Idle")
 	# transition to JUMP when in the air
 	if state in [IDLE, RUN] and !is_on_floor():
-		change_state(JUMP)
+		change_state(JUMP, jump_texture, "Jump")
 	# transition from running or jumping to attacking
 	if attack and not right and not left and not jump:
 		$Sprite2D.set_frame(0)
-		change_state(ATTACK)
+		change_state(ATTACK, attack2_texture, "Attack2")
 	# RUN transitions to IDLE when standing still
 	if state == RUN and attack:
-		$AnimationPlayer.speed_scale = 5.0
-		$AttackPivot/AttackArea.monitoring = true
-		$Sprite2D.texture = run_attack2_texture
-		$Sprite2D.set_hframes(6)
-		$AnimationPlayer.play("RunAttack2")
-		await $AnimationPlayer.animation_finished
-		$AttackPivot/AttackArea.monitoring = false
-		$AnimationPlayer.speed_scale = 3.0
-		change_state(RUN)
+		change_state(ATTACK, run_attack2_texture, "RunAttack2")
 	$AttackPivot.scale.x = -1 if $Sprite2D.flip_h else 1
 
-func change_state(new_state):
+func change_state(new_state, texture, animation):
 	state = new_state
 	match state:
 		IDLE:
 			$Sprite2D.set_hframes(4)
-			$Sprite2D.texture = idle_texture
-			$AnimationPlayer.play("Idle")
+			$Sprite2D.texture = texture
+			$AnimationPlayer.play(animation)
 		RUN:
 			$Sprite2D.set_hframes(6)
-			$Sprite2D.texture = run_texture
+			$Sprite2D.texture = texture
 			$AnimationPlayer.play("Run")
 		HURT:
 			$Sprite2D.set_hframes(4)
-			$Sprite2D.texture = hurt_texture
-			$AnimationPlayer.play("Hurt")
+			$Sprite2D.texture =texture
+			$AnimationPlayer.play(animation)
 			await $AnimationPlayer.animation_finished
-			change_state(IDLE)
+			change_state(IDLE, idle_texture, "Idle")
 		JUMP:
-			$Sprite2D.texture = jump_texture
+			$Sprite2D.texture = texture
 			$Sprite2D.set_hframes(8)
-			$AnimationPlayer.play("Jump")
+			$AnimationPlayer.play(animation)
 		DEAD:
 			$Sprite2D.set_hframes(8)
-			$Sprite2D.texture = death_texture
-			$AnimationPlayer.play("Death")
+			$Sprite2D.texture = texture
+			$AnimationPlayer.play(animation)
 			await $AnimationPlayer.animation_finished
 			died.emit()
 			hide()
 		ATTACK:
 			$AnimationPlayer.speed_scale = 5.0
 			$AttackPivot/AttackArea.monitoring = true
-			$Sprite2D.texture = attack2_texture
+			$Sprite2D.texture = texture
 			$Sprite2D.set_hframes(6)
-			$AnimationPlayer.play("Attack2")
+			$AnimationPlayer.play(animation)
 			await $AnimationPlayer.animation_finished
 			$AttackPivot/AttackArea.monitoring = false
 			$AnimationPlayer.speed_scale = 3.0
-			change_state(IDLE)
+			if texture == run_attack2_texture or texture == run_attack1_texture:
+				change_state(RUN, run_texture, "Run")
+			else:
+				change_state(IDLE, idle_texture, "Idle")
 
 func _physics_process(delta):
-	$AttackPivot/AttackArea/CollisionShape2D.debug_color = Color.YELLOW
 	velocity.y += gravity * delta
 	get_input()
 	
@@ -170,7 +164,7 @@ func _physics_process(delta):
 		return
 	
 	if state == JUMP and is_on_floor():
-		change_state(IDLE)
+		change_state(IDLE, idle_texture, "Idle")
 		$Dust.emitting = true
 	
 	# Simplified chunk tracking - only x-axis
@@ -203,7 +197,7 @@ func take_damage(node, amount):
 	$HitBox.monitoring = true
 	
 	if life <= 0:
-		change_state(DEAD)
+		change_state(DEAD, death_texture, "Death")
 
 func _on_attack_area_area_entered(area: Area2D):
 	print("Attack area hit something:", area.name)
