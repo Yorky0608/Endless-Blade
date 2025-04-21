@@ -29,7 +29,8 @@ var walk_attack2_texture = preload("res://sprites/2/WalkAttack2.png")
 enum {IDLE, RUN, JUMP, HURT, DEAD, ATTACK}
 var state = IDLE
 var life = 100
-var can_be_damaged = true
+
+var can_attack = true
 
 # Chunk tracking (simplified for horizontal only)
 const CHUNK_WIDTH = 1152  # Must match level.gd value
@@ -72,8 +73,9 @@ func hurt():
 		change_state(HURT, hurt_texture, "Hurt")
 
 func get_input():
-	if state == HURT:
+	if state == HURT or state == DEAD:
 		return  # don't allow movement during hurt state
+	
 	var right = Input.is_action_pressed("right")
 	var left = Input.is_action_pressed("left")
 	var jump = Input.is_action_just_pressed("jump")
@@ -89,6 +91,15 @@ func get_input():
 		velocity.x -= run_speed
 		$Sprite2D.flip_h = true
 		$Sprite2D.offset.x = -11
+	if Input.is_action_just_pressed("attack") and can_attack:
+		if attack and state == IDLE and is_on_floor():
+			$Sprite2D.set_frame(0)
+			change_state(ATTACK, attack2_texture, "Attack2")
+		# RUN transitions to IDLE when standing still
+		elif state == RUN and attack:
+			change_state(ATTACK, run_attack2_texture, "RunAttack2")
+		elif state == JUMP and attack:
+			change_state(ATTACK, jump_attack_texture, "JumpAttack")
 	# only allow jumping when on the ground
 	if jump and is_on_floor():
 		$JumpSound.play()
@@ -104,12 +115,7 @@ func get_input():
 	if state in [IDLE, RUN] and !is_on_floor():
 		change_state(JUMP, jump_texture, "Jump")
 	# transition from running or jumping to attacking
-	if attack and not right and not left and not jump:
-		$Sprite2D.set_frame(0)
-		change_state(ATTACK, attack2_texture, "Attack2")
-	# RUN transitions to IDLE when standing still
-	if state == RUN and attack:
-		change_state(ATTACK, run_attack2_texture, "RunAttack2")
+	# Only allow attack if cooldown is over and not already attacking
 	$AttackPivot.scale.x = -1 if $Sprite2D.flip_h else 1
 
 func change_state(new_state, texture, animation):
@@ -125,7 +131,7 @@ func change_state(new_state, texture, animation):
 			$AnimationPlayer.play("Run")
 		HURT:
 			$Sprite2D.set_hframes(4)
-			$Sprite2D.texture =texture
+			$Sprite2D.texture = texture
 			$AnimationPlayer.play(animation)
 			await $AnimationPlayer.animation_finished
 			change_state(IDLE, idle_texture, "Idle")
@@ -134,13 +140,16 @@ func change_state(new_state, texture, animation):
 			$Sprite2D.set_hframes(8)
 			$AnimationPlayer.play(animation)
 		DEAD:
+			$AttackPivot/AttackArea.monitoring = false
 			$Sprite2D.set_hframes(8)
 			$Sprite2D.texture = texture
 			$AnimationPlayer.play(animation)
 			await $AnimationPlayer.animation_finished
+			$CollisionShape2D.set_deferred("disabled", true)
 			died.emit()
 			hide()
 		ATTACK:
+			can_attack = false
 			$AnimationPlayer.speed_scale = 5.0
 			$AttackPivot/AttackArea.monitoring = true
 			$Sprite2D.texture = texture
@@ -149,12 +158,16 @@ func change_state(new_state, texture, animation):
 			await $AnimationPlayer.animation_finished
 			$AttackPivot/AttackArea.monitoring = false
 			$AnimationPlayer.speed_scale = 3.0
+			# Start cooldown timer (non-blocking)
+			$AttackCoolDown.start(0.5)
+			
 			if texture == run_attack2_texture or texture == run_attack1_texture:
 				change_state(RUN, run_texture, "Run")
 			else:
 				change_state(IDLE, idle_texture, "Idle")
 
 func _physics_process(delta):
+	
 	velocity.y += gravity * delta
 	get_input()
 	
@@ -185,12 +198,10 @@ func take_damage(node, amount):
 		velocity.x = -100
 		velocity.y = -100
 	life -= amount
-	print(life, amount)
 	hurt()
 
 	invincible = true
 	$HitBox.set_deferred("monitoring", false)
-	print($HitBox.monitoring)
 	$InvincibilityTimer.start(invincibility_time)
 	await $InvincibilityTimer.timeout
 	invincible = false
@@ -216,3 +227,7 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy_hitbox"):
 		var node = area.get_parent()
 		take_damage(node, node.contact_damage)
+
+
+func _on_attack_cool_down_timeout() -> void:
+	can_attack = true

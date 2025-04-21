@@ -1,9 +1,9 @@
+Timer
+Label
 CollisionShape2D
 Node2D
 Area2D
 VBoxContainer
-Timer
-Label
 Control
 HBoxContainer
 Container

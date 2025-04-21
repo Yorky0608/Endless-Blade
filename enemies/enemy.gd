@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var player = get_tree().get_first_node_in_group("player")  # More reliable player reference
 
-@export var speed = 100
+@export var speed = 160
 @export var gravity = 900
 @export var contact_damage = 10
 @export var score_value = 100
@@ -37,6 +37,9 @@ func apply_damage(amount: int):
 func death():
 	dead = true
 	$CollisionShape2D.set_deferred("disabled", true)
+	$HitBox/CollisionShape2D.set_deferred("disabled", true)
+	$Sprite2D.set_hframes(3)
+	#$AnimationPlayer.speed_scale = 2.0
 	$Sprite2D.texture = death_texture
 	$AnimationPlayer.play("death")
 	

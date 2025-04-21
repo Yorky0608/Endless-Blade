@@ -1,26 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://cykp8bxmpd8hl"]
+[gd_scene load_steps=7 format=3 uid="uid://cykp8bxmpd8hl"]
 
 [ext_resource type="Script" path="res://ui.gd" id="1_ttjfx"]
+[ext_resource type="FontFile" uid="uid://1mt6tq6qrv1k" path="res://assets/Kenney Thick.ttf" id="2_kseny"]
 [ext_resource type="Texture2D" uid="uid://bjextpnjlt1xq" path="res://assets/download-removebg-preview.png" id="2_m7qav"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_v83ku"]
+font = ExtResource("2_kseny")
 font_size = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_vy8r4"]
+font = ExtResource("2_kseny")
 font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_j33lr"]
+font = ExtResource("2_kseny")
+font_size = 30
 
 [node name="UI" type="CanvasLayer" groups=["ui"]]
 script = ExtResource("1_ttjfx")
 
 [node name="Score" type="Label" parent="."]
+offset_left = 20.0
 offset_top = 20.0
-offset_right = 225.0
+offset_right = 245.0
 offset_bottom = 62.0
 text = "Score: 0"
 label_settings = SubResource("LabelSettings_v83ku")
-horizontal_alignment = 1
 
 [node name="Message" type="Label" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -44,3 +52,16 @@ offset_bottom = 101.0
 size_flags_horizontal = 4
 value = 100.0
 texture_progress = ExtResource("2_m7qav")
+
+[node name="SurvivalTime" type="Timer" parent="."]
+autostart = true
+
+[node name="SurvivalTimeUpdate" type="Label" parent="."]
+offset_left = 860.0
+offset_top = 20.0
+offset_right = 1129.0
+offset_bottom = 61.0
+text = "Time: 00:00"
+label_settings = SubResource("LabelSettings_j33lr")
+
+[connection signal="timeout" from="SurvivalTime" to="." method="_on_survival_time_timeout"]
