@@ -53,9 +53,6 @@ size_flags_horizontal = 4
 value = 100.0
 texture_progress = ExtResource("3_ubi16")
 
-[node name="SurvivalTime" type="Timer" parent="."]
-autostart = true
-
 [node name="SurvivalTimeUpdate" type="Label" parent="."]
 offset_left = 860.0
 offset_top = 20.0
@@ -64,5 +61,3 @@ offset_bottom = 61.0
 text = "Time: 00:00"
 label_settings = SubResource("LabelSettings_j33lr")
 horizontal_alignment = 2
-
-[connection signal="timeout" from="SurvivalTime" to="." method="_on_survival_time_timeout"]

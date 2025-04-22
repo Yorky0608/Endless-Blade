@@ -16,6 +16,8 @@ func _process(delta):
 	if timer_running:
 		survival_time += delta
 		$SurvivalTimeUpdate.text = format()
+	else:
+		print(timer_running)
 
 func update_score(value):
 	current_score = value
@@ -30,13 +32,7 @@ func show_message(text):
 	await get_tree().create_timer(2).timeout
 	$Message.hide()
 
-
-func _on_survival_time_timeout() -> void:
-	# Optional: If you're using a Timer node instead of process
-	if timer_running:
-		survival_time += 1.0
-
 func format():
-	var minutes = floor(survival_time / 60 /2)
-	var seconds = fmod(survival_time /2, 60)
+	var minutes = floor(survival_time / 60)
+	var seconds = fmod(survival_time, 60)
 	return "%02d:%05.2f" % [minutes, seconds]

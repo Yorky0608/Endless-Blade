@@ -140,6 +140,7 @@ func change_state(new_state, texture, animation):
 			$Sprite2D.set_hframes(8)
 			$AnimationPlayer.play(animation)
 		DEAD:
+			$UI.survival_time = false
 			$AttackPivot/AttackArea.monitoring = false
 			$Sprite2D.set_hframes(8)
 			$Sprite2D.texture = texture
