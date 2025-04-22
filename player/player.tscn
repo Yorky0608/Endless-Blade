@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://bspy4rvse1yv8"]
+[gd_scene load_steps=29 format=3 uid="uid://bspy4rvse1yv8"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_b3yer"]
 [ext_resource type="Texture2D" uid="uid://55kc7plv4lg1" path="res://sprites/2/Attack2.png" id="2_jkdam"]
-[ext_resource type="AudioStream" uid="uid://cj78mf5ulvfyu" path="res://assets/audio/jump4.ogg" id="3_cfmin"]
-[ext_resource type="AudioStream" uid="uid://cjf1tattajnal" path="res://assets/audio/hurt1.ogg" id="3_wy6fc"]
+[ext_resource type="AudioStream" uid="uid://dmk6se6cl7nbm" path="res://assets/audio/action_jump.mp3" id="4_xuwhu"]
 [ext_resource type="PackedScene" uid="uid://cykp8bxmpd8hl" path="res://ui.tscn" id="5_rjh85"]
+[ext_resource type="AudioStream" uid="uid://cp1twjkxgovl1" path="res://assets/audio/slap-hurt-pain-sound-effect-262618.mp3" id="5_upxus"]
+[ext_resource type="AudioStream" uid="uid://dkvp3sgk4kqp" path="res://assets/audio/sword-sound-2-36274.mp3" id="6_l1mrh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1o32"]
 size = Vector2(18.125, 25.125)
@@ -362,11 +363,15 @@ speed_scale = 4.0
 zoom = Vector2(2, 2)
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_cfmin")
+stream = ExtResource("4_xuwhu")
 volume_db = -10.0
 
 [node name="HurtSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_wy6fc")
+stream = ExtResource("5_upxus")
+volume_db = -10.0
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_l1mrh")
 volume_db = -10.0
 
 [node name="Dust" type="CPUParticles2D" parent="."]

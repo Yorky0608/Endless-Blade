@@ -9,6 +9,5 @@ res://levels/level.tscn
 res://levels/spawn_chunk.tscn
 res://ui.tscn
 res://player/player.gd
-res://ui.gd
 res://levels/level.gd
 res://enemies/enemy.gd

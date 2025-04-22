@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://ui/title.gd" id="1_4hio6"]
 [ext_resource type="FontFile" uid="uid://1mt6tq6qrv1k" path="res://assets/Kenney Thick.ttf" id="3_175md"]
+[ext_resource type="AudioStream" uid="uid://ciprnya1s4j6h" path="res://assets/audio/eerie-prelude-23078.mp3" id="4_nntxd"]
 [ext_resource type="PackedScene" uid="uid://vea3dq41ewm6" path="res://levels/background.tscn" id="4_yw284"]
-[ext_resource type="AudioStream" uid="uid://b26x1siqcemqg" path="res://assets/audio/Intro Theme.ogg" id="5_12xq0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wjyqb"]
 font = ExtResource("3_175md")
@@ -87,6 +87,7 @@ grow_vertical = 2
 script = ExtResource("1_4hio6")
 
 [node name="Background" parent="." instance=ExtResource("4_yw284")]
+position = Vector2(0, 1)
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -126,5 +127,6 @@ libraries = {
 autoplay = "intro"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_12xq0")
+stream = ExtResource("4_nntxd")
+volume_db = 5.0
 autoplay = true

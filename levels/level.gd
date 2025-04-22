@@ -63,7 +63,6 @@ func _spawn_chunk(x_index: int, is_spawn_chunk: bool = false):
 		var marker = new_chunk.get_node_or_null("SpawnMarker")
 		if marker:
 			spawn_marker_position = marker.global_position
-			print("Found spawn marker at: ", spawn_marker_position)
 		else:
 			push_error("WARNING: Spawn chunk missing SpawnMarker")
 			spawn_marker_position = Vector2(x_index * CHUNK_WIDTH + 100, 230)  # Fallback position

@@ -25,7 +25,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 func apply_damage(amount: int):
-	print(health)
 	if dead: 
 		return
 	
@@ -36,6 +35,7 @@ func apply_damage(amount: int):
 
 func death():
 	dead = true
+	$Death.play()
 	$CollisionShape2D.set_deferred("disabled", true)
 	$HitBox/CollisionShape2D.set_deferred("disabled", true)
 	$Sprite2D.set_hframes(3)

@@ -149,6 +149,7 @@ func change_state(new_state, texture, animation):
 			died.emit()
 			hide()
 		ATTACK:
+			$AttackSound.play()
 			can_attack = false
 			$AnimationPlayer.speed_scale = 5.0
 			$AttackPivot/AttackArea.monitoring = true
@@ -211,19 +212,16 @@ func take_damage(node, amount):
 		change_state(DEAD, death_texture, "Death")
 
 func _on_attack_area_area_entered(area: Area2D):
-	print("Attack area hit something:", area.name)
 	if area.is_in_group("enemy_hitbox"):
 		var node = area
 		while node:
 			if node.has_method("apply_damage"):
-				print("Applying damage to:", node.name)
 				node.apply_damage(damage)
 				break
-			node = node.get_parent() 
+			node = node.get_parent()
 
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
-	print("Touched Enemy:", area.name)
 	if area.is_in_group("enemy_hitbox"):
 		var node = area.get_parent()
 		take_damage(node, node.contact_damage)

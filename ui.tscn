@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui.gd" id="1_ttjfx"]
 [ext_resource type="FontFile" uid="uid://1mt6tq6qrv1k" path="res://assets/Kenney Thick.ttf" id="2_kseny"]
-[ext_resource type="Texture2D" uid="uid://bjextpnjlt1xq" path="res://assets/download-removebg-preview.png" id="2_m7qav"]
+[ext_resource type="Texture2D" uid="uid://wwdil1cn3sse" path="res://assets/health_bar.png" id="3_ubi16"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_v83ku"]
 font = ExtResource("2_kseny")
@@ -47,11 +47,11 @@ label_settings = SubResource("LabelSettings_vy8r4")
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 offset_left = 22.0
 offset_top = 70.0
-offset_right = 202.0
-offset_bottom = 101.0
+offset_right = 178.0
+offset_bottom = 104.0
 size_flags_horizontal = 4
 value = 100.0
-texture_progress = ExtResource("2_m7qav")
+texture_progress = ExtResource("3_ubi16")
 
 [node name="SurvivalTime" type="Timer" parent="."]
 autostart = true
@@ -63,5 +63,6 @@ offset_right = 1129.0
 offset_bottom = 61.0
 text = "Time: 00:00"
 label_settings = SubResource("LabelSettings_j33lr")
+horizontal_alignment = 2
 
 [connection signal="timeout" from="SurvivalTime" to="." method="_on_survival_time_timeout"]
