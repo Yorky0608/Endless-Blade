@@ -94,6 +94,7 @@ func _unload_distant_chunks(center_x: int):
 		loaded_chunks.erase(x)
 
 func _on_player_died():
+	await get_tree().create_timer(1.0).timeout
 	GameState.restart()
 
 func spawn_skeletons():

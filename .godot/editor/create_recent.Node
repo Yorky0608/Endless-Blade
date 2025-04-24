@@ -1,6 +1,6 @@
+Label
 AudioStreamPlayer
 Timer
-Label
 CollisionShape2D
 Node2D
 Area2D

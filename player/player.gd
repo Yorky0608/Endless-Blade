@@ -140,13 +140,22 @@ func change_state(new_state, texture, animation):
 			$Sprite2D.set_hframes(8)
 			$AnimationPlayer.play(animation)
 		DEAD:
-			$UI.survival_time = false
+			velocity = Vector2.ZERO
+			set_physics_process(false)  # Disable physics updates
 			$AttackPivot/AttackArea.monitoring = false
 			$Sprite2D.set_hframes(8)
 			$Sprite2D.texture = texture
 			$AnimationPlayer.play(animation)
 			await $AnimationPlayer.animation_finished
-			$CollisionShape2D.set_deferred("disabled", true)
+			$CollisionShape2D.disabled = true
+			$UI.stop_timer()
+			$UI.show_message("Game Over")
+			if $UI.current_score > Global.high_score:
+				Global.high_score = $UI.current_score
+				Global.save_score()
+			if $UI.survival_time > Global.highest_time:
+				Global.highest_time = $UI.survival_time
+				Global.save_time()
 			died.emit()
 			hide()
 		ATTACK:

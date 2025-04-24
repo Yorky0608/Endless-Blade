@@ -4,6 +4,7 @@ extends CanvasLayer
 
 var survival_time: float = 0.0
 var timer_running: bool = true
+var survived_time = 0
 
 var current_score = 0
 
@@ -16,8 +17,6 @@ func _process(delta):
 	if timer_running:
 		survival_time += delta
 		$SurvivalTimeUpdate.text = format()
-	else:
-		print(timer_running)
 
 func update_score(value):
 	current_score = value
@@ -36,3 +35,6 @@ func format():
 	var minutes = floor(survival_time / 60)
 	var seconds = fmod(survival_time, 60)
 	return "%02d:%05.2f" % [minutes, seconds]
+
+func stop_timer():
+	timer_running = false

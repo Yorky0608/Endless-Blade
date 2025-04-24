@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfc4qk6t8nfbo"]
+[gd_scene load_steps=12 format=3 uid="uid://dfc4qk6t8nfbo"]
 
 [ext_resource type="Script" path="res://ui/title.gd" id="1_4hio6"]
 [ext_resource type="FontFile" uid="uid://1mt6tq6qrv1k" path="res://assets/Kenney Thick.ttf" id="3_175md"]
@@ -43,6 +43,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Score:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SurvivalTimeUpdate:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_47m24"]
 resource_name = "intro"
@@ -70,12 +94,44 @@ tracks/1/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Score:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SurvivalTimeUpdate:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8euf7"]
 _data = {
 "RESET": SubResource("Animation_dw3jk"),
 "intro": SubResource("Animation_47m24")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_mgshm"]
+font = ExtResource("3_175md")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_qejvs"]
+font = ExtResource("3_175md")
+font_size = 30
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -96,10 +152,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -445.5
-offset_top = -42.0
-offset_right = 445.5
-offset_bottom = 42.0
+offset_left = -360.0
+offset_top = -442.0
+offset_right = 531.0
+offset_bottom = -358.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Endless Blade"
@@ -130,3 +186,23 @@ autoplay = "intro"
 stream = ExtResource("4_nntxd")
 volume_db = 5.0
 autoplay = true
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 245.0
+offset_bottom = 62.0
+text = "Highest Score - 0"
+label_settings = SubResource("LabelSettings_mgshm")
+
+[node name="SurvivalTimeUpdate" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 80.0
+offset_right = 620.0
+offset_bottom = 121.0
+text = "Highest Survived Time - 00:00"
+label_settings = SubResource("LabelSettings_qejvs")
+horizontal_alignment = 2
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
