@@ -1,12 +1,12 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1745514110
-export_presets.cfg::TextFile::-1::1745514110::0::1::::<><>::
+::res://::1745514626
+export_presets.cfg::TextFile::-1::1745514380::0::1::::<><>::
 game_state.gd::GDScript::-1::1744305045::0::1::::<>Node<>::
+global.gd::GDScript::-1::1745513383::0::1::::<>Node<>::
 icon.svg::CompressedTexture2D::4711849733033694009::1744047696::1745344012::1::::<><>::
 main.gd::GDScript::-1::1744816643::0::1::::<>Node<>::
 main.tscn::PackedScene::483754651837636812::1744427138::0::1::::<><>::res://main.gd
 README.md::TextFile::-1::1744644157::0::1::::<><>::
-global.gd::GDScript::-1::1745513383::0::1::::<>Node<>::
 tile_setup.tscn::PackedScene::1659028538676420443::1745513384::0::1::::<><>::uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png<>uid://bspy4rvse1yv8::::res://player/player.tscn<>uid://c37t8m032qm5k::::res://levels/chunk_down.tscn<>uid://dnu0rceo3bl7m::::res://enemies/skelly.tscn
 ui.gd::GDScript::-1::1745513348::0::1::::<>CanvasLayer<>::
 ui.tscn::PackedScene::6478987166949213765::1745513384::0::1::::<><>::res://ui.gd<>uid://1mt6tq6qrv1k::::res://assets/Kenney Thick.ttf<>uid://wwdil1cn3sse::::res://assets/health_bar.png
@@ -85,6 +85,7 @@ license.txt::TextFile::-1::1743088545::0::1::::<><>::
 4.png::CompressedTexture2D::3011911888003402507::1744047958::1745344016::1::::<><>::
 5.png::CompressedTexture2D::3275780504130098962::1744047958::1745344016::1::::<><>::
 2304x1296.png::CompressedTexture2D::8018707973454527332::1744047958::1745344017::1::::<><>::
+::res://download/::1745514380
 ::res://enemies/::1745513383
 enemy.gd::GDScript::-1::1745343977::0::1::::<>CharacterBody2D<>::
 skelly.tscn::PackedScene::8114552968669948928::1745513383::0::1::::<><>::res://enemies/enemy.gd<>uid://dwd7f51hik30e::::res://monsters3/Skeleton/Walk.png<>uid://blxaghsre4243::::res://assets/audio/bone-break-sound-ver-2-269660.mp3
