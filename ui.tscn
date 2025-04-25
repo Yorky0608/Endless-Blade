@@ -60,4 +60,4 @@ offset_right = 1129.0
 offset_bottom = 61.0
 text = "Time: 00:00"
 label_settings = SubResource("LabelSettings_j33lr")
-horizontal_alignment = 2
+horizontal_alignment = 1

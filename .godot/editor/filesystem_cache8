@@ -1,6 +1,6 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1745516826
-export_presets.cfg::TextFile::-1::1745516142::0::1::::<><>::
+::res://::1745602636
+export_presets.cfg::TextFile::-1::1745516950::0::1::::<><>::
 game_state.gd::GDScript::-1::1744305045::0::1::::<>Node<>::
 global.gd::GDScript::-1::1745513383::0::1::::<>Node<>::
 icon.svg::CompressedTexture2D::4711849733033694009::1744047696::1745344012::1::::<><>::
@@ -10,7 +10,7 @@ README.md::TextFile::-1::1745515464::0::1::::<><>::
 tile_setup.tscn::PackedScene::1659028538676420443::1745516631::0::1::::<><>::uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png<>uid://bspy4rvse1yv8::::res://player/player.tscn<>uid://c37t8m032qm5k::::res://levels/chunk_down.tscn<>uid://dnu0rceo3bl7m::::res://enemies/skelly.tscn
 ui.gd::GDScript::-1::1745513348::0::1::::<>CanvasLayer<>::
 ui.tscn::PackedScene::6478987166949213765::1745516632::0::1::::<><>::res://ui.gd<>uid://1mt6tq6qrv1k::::res://assets/Kenney Thick.ttf<>uid://wwdil1cn3sse::::res://assets/health_bar.png
-::res://assets/::1745516813
+::res://assets/::1745516829
 EndlessBlade.png::CompressedTexture2D::1112654323549418252::1745516775::1745516829::1::::<><>::
 health_bar.png::CompressedTexture2D::1589767925986697632::1745343977::1745344016::1::::<><>::
 Kenney Thick.ttf::FontFile::1850892474202270138::1744047958::1745344010::1::::<><>::
@@ -86,7 +86,7 @@ license.txt::TextFile::-1::1743088545::0::1::::<><>::
 4.png::CompressedTexture2D::3011911888003402507::1744047958::1745344016::1::::<><>::
 5.png::CompressedTexture2D::3275780504130098962::1744047958::1745344016::1::::<><>::
 2304x1296.png::CompressedTexture2D::8018707973454527332::1744047958::1745344017::1::::<><>::
-::res://download/::1745516142
+::res://download/::1745516950
 ::res://enemies/::1745516631
 enemy.gd::GDScript::-1::1745343977::0::1::::<>CharacterBody2D<>::
 skelly.tscn::PackedScene::8114552968669948928::1745516631::0::1::::<><>::res://enemies/enemy.gd<>uid://dwd7f51hik30e::::res://monsters3/Skeleton/Walk.png<>uid://blxaghsre4243::::res://assets/audio/bone-break-sound-ver-2-269660.mp3

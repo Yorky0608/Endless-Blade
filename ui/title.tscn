@@ -143,7 +143,8 @@ grow_vertical = 2
 script = ExtResource("1_4hio6")
 
 [node name="Background" parent="." instance=ExtResource("4_yw284")]
-position = Vector2(0, 1)
+position = Vector2(-2, -658)
+scale = Vector2(2, 2)
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
