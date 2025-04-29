@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_3ep40"]
 [ext_resource type="PackedScene" uid="uid://bspy4rvse1yv8" path="res://player/player.tscn" id="1_mnykd"]
-[ext_resource type="AudioStream" uid="uid://ciprnya1s4j6h" path="res://assets/audio/eerie-prelude-23078.mp3" id="3_tir36"]
+[ext_resource type="AudioStream" uid="uid://34ier75hsy1u" path="res://assets/audio/eerie-prelude-23078.ogg" id="3_13cds"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_3ep40")
@@ -13,7 +13,7 @@ script = ExtResource("1_3ep40")
 position = Vector2(500, 0)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_tir36")
+stream = ExtResource("3_13cds")
 volume_db = 5.0
 autoplay = true
 

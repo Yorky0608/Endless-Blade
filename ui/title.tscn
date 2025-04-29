@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/title.gd" id="1_4hio6"]
 [ext_resource type="FontFile" uid="uid://1mt6tq6qrv1k" path="res://assets/Kenney Thick.ttf" id="3_175md"]
-[ext_resource type="AudioStream" uid="uid://ciprnya1s4j6h" path="res://assets/audio/eerie-prelude-23078.mp3" id="4_nntxd"]
+[ext_resource type="AudioStream" uid="uid://34ier75hsy1u" path="res://assets/audio/eerie-prelude-23078.ogg" id="4_7hwli"]
 [ext_resource type="PackedScene" uid="uid://vea3dq41ewm6" path="res://levels/background.tscn" id="4_yw284"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wjyqb"]
@@ -184,7 +184,7 @@ libraries = {
 autoplay = "intro"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_nntxd")
+stream = ExtResource("4_7hwli")
 volume_db = 5.0
 autoplay = true
 
