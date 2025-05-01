@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bm7s6wl5mv6mu" path="res://tileset/1 Tiles/Tileset.png" id="1_ubpmx"]
 [ext_resource type="PackedScene" uid="uid://bspy4rvse1yv8" path="res://player/player.tscn" id="2_3xxnb"]
-[ext_resource type="PackedScene" uid="uid://c37t8m032qm5k" path="res://levels/chunk_down.tscn" id="3_uy6pf"]
+[ext_resource type="PackedScene" uid="uid://dpdjlrgk2esb5" path="res://levels/chunk_3.tscn" id="4_gr8d0"]
 [ext_resource type="PackedScene" uid="uid://dnu0rceo3bl7m" path="res://enemies/skelly.tscn" id="4_u3ib1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xqs3c"]
@@ -418,7 +418,7 @@ sources/0 = SubResource("TileSetAtlasSource_xqs3c")
 tile_set = SubResource("TileSet_xfjp4")
 format = 2
 
-[node name="ChunkDown" parent="." instance=ExtResource("3_uy6pf")]
+[node name="Chunk3" parent="." instance=ExtResource("4_gr8d0")]
 
 [node name="Skelly" parent="." instance=ExtResource("4_u3ib1")]
 

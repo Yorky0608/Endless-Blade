@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://c37t8m032qm5k"]
 
-[ext_resource type="Texture2D" uid="uid://bm7s6wl5mv6mu" path="res://tileset/1 Tiles/Tileset.png" id="1_nvo5l"]
-[ext_resource type="PackedScene" uid="uid://vea3dq41ewm6" path="res://levels/background.tscn" id="1_rblke"]
+[ext_resource type="PackedScene" uid="uid://vea3dq41ewm6" path="res://levels/background.tscn" id="1_jx6kn"]
+[ext_resource type="Texture2D" uid="uid://bm7s6wl5mv6mu" path="res://tileset/1 Tiles/Tileset.png" id="2_efohc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u434x"]
-texture = ExtResource("1_nvo5l")
+texture = ExtResource("2_efohc")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -393,9 +393,9 @@ texture = ExtResource("1_nvo5l")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_u434x")
 
-[node name="ChunkDown" type="Node2D" groups=["chunks"]]
+[node name="Chunk2" type="Node2D" groups=["chunks"]]
 
-[node name="Background" parent="." instance=ExtResource("1_rblke")]
+[node name="Background" parent="." instance=ExtResource("1_jx6kn")]
 
 [node name="Sprite2D" parent="Background" index="0"]
 position = Vector2(576, 0)

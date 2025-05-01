@@ -5,8 +5,9 @@ class_name LevelManager
 ## Chunk configuration - EDIT THESE TO MATCH YOUR GAME ##
 const CHUNK_SCENES := [
 	preload("res://levels/spawn_chunk.tscn"),
-	preload("res://levels/chunk_down.tscn"),
-	preload("res://levels/chunkup.tscn")
+	preload("res://levels/chunk1.tscn"),
+	preload("res://levels/chunk2.tscn"),
+	preload("res://levels/chunk_3.tscn"),
 	# Add more chunks here as you create them
 ]
 const CHUNK_WIDTH = 1152  # Must match your chunk scene width
@@ -23,7 +24,7 @@ var player_health = 20
 var skeleton_scene = preload("res://enemies/skelly.tscn")
 var spawn_interval = 5.0
 var spawn_timer = 0.0
-var skeletons_spawned = 0
+var skeletons_spawned = 1
 var spawn_margin = 100  # Pixels outside viewport
 
 @onready var player = $Entities/Player  # Adjust path to player
@@ -98,8 +99,19 @@ func _on_player_died():
 	GameState.restart()
 
 func spawn_skeletons():
-	skeletons_spawned += 1
-	var skeletons_to_spawn = skeletons_spawned  # Scale difficulty
+	# Count currently alive skeletons
+	var alive_skeletons = 0
+	for child in get_children():
+		if child.is_in_group("enemies"):  # Make sure to add skeletons to this group when instantiating
+			alive_skeletons += 1
+	
+	# Set a maximum limit (e.g., 20)
+	var max_skeletons = 20
+	if alive_skeletons >= max_skeletons:
+		return
+
+	skeletons_spawned += skeletons_spawned * 0.1
+	var skeletons_to_spawn = floor(skeletons_spawned) # Scale difficulty
 
 	for i in skeletons_to_spawn:
 		var skeleton = skeleton_scene.instantiate()

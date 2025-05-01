@@ -160,15 +160,16 @@ func change_state(new_state, texture, animation):
 			hide()
 		ATTACK:
 			$AttackSound.play()
+			# Use for the dash
 			#can_attack = false
-			$AnimationPlayer.speed_scale = 5.0
+			$AnimationPlayer.speed_scale = 6.0
 			$AttackPivot/AttackArea.monitoring = true
 			$Sprite2D.texture = texture
 			$Sprite2D.set_hframes(6)
 			$AnimationPlayer.play(animation)
 			await $AnimationPlayer.animation_finished
 			$AnimationPlayer.speed_scale = 3.0
-			# Start cooldown timer (non-blocking)
+			# Reuse for a potential dash?
 			#$AttackCoolDown.start(0.5)
 			
 			if texture == run_attack2_texture or texture == run_attack1_texture:
