@@ -160,17 +160,16 @@ func change_state(new_state, texture, animation):
 			hide()
 		ATTACK:
 			$AttackSound.play()
-			can_attack = false
+			#can_attack = false
 			$AnimationPlayer.speed_scale = 5.0
 			$AttackPivot/AttackArea.monitoring = true
 			$Sprite2D.texture = texture
 			$Sprite2D.set_hframes(6)
 			$AnimationPlayer.play(animation)
 			await $AnimationPlayer.animation_finished
-			$AttackPivot/AttackArea.monitoring = false
 			$AnimationPlayer.speed_scale = 3.0
 			# Start cooldown timer (non-blocking)
-			$AttackCoolDown.start(0.5)
+			#$AttackCoolDown.start(0.5)
 			
 			if texture == run_attack2_texture or texture == run_attack1_texture:
 				change_state(RUN, run_texture, "Run")
@@ -223,6 +222,7 @@ func take_damage(node, amount):
 
 func _on_attack_area_area_entered(area: Area2D):
 	if area.is_in_group("enemy_hitbox"):
+		$AttackPivot/AttackArea.set_deferred('monitoring', false)
 		var node = area
 		while node:
 			if node.has_method("apply_damage"):
