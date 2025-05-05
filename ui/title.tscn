@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfc4qk6t8nfbo"]
+[gd_scene load_steps=13 format=3 uid="uid://dfc4qk6t8nfbo"]
 
 [ext_resource type="Script" path="res://ui/title.gd" id="1_4hio6"]
 [ext_resource type="FontFile" uid="uid://1mt6tq6qrv1k" path="res://assets/Kenney Thick.ttf" id="3_175md"]
@@ -67,6 +67,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Quit:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_47m24"]
 resource_name = "intro"
@@ -118,6 +130,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Quit:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8euf7"]
 _data = {
@@ -132,6 +156,10 @@ font_size = 30
 [sub_resource type="LabelSettings" id="LabelSettings_qejvs"]
 font = ExtResource("3_175md")
 font_size = 30
+
+[sub_resource type="Theme" id="Theme_51vup"]
+default_font = ExtResource("3_175md")
+default_font_size = 30
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -207,4 +235,17 @@ text = "Highest Survived Time - 00:00"
 label_settings = SubResource("LabelSettings_qejvs")
 horizontal_alignment = 2
 
+[node name="Quit" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.052
+offset_left = 1000.0
+offset_top = 20.0
+offset_right = 1000.1
+offset_bottom = 61.0
+theme = SubResource("Theme_51vup")
+text = "Quit"
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

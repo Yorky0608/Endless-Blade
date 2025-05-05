@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1746464540
+::res://::1746466175
 export_presets.cfg::TextFile::-1::1745602936::0::1::::<><>::
 game_state.gd::GDScript::-1::1744305045::0::1::::<>Node<>::
 global.gd::GDScript::-1::1745513383::0::1::::<>Node<>::
@@ -7,9 +7,9 @@ icon.svg::CompressedTexture2D::4711849733033694009::1744047696::1746112615::1:::
 main.gd::GDScript::-1::1744816643::0::1::::<>Node<>::
 main.tscn::PackedScene::483754651837636812::1744427138::0::1::::<><>::res://main.gd
 README.md::TextFile::-1::1745515464::0::1::::<><>::
-tile_setup.tscn::PackedScene::1659028538676420443::1746121381::0::1::::<><>::uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png<>uid://bspy4rvse1yv8::::res://player/player.tscn<>uid://dpdjlrgk2esb5::::res://levels/chunk_3.tscn<>uid://dnu0rceo3bl7m::::res://enemies/skelly.tscn
+tile_setup.tscn::PackedScene::1659028538676420443::1746465081::0::1::::<><>::uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png<>uid://bspy4rvse1yv8::::res://player/player.tscn<>uid://dpdjlrgk2esb5::::res://levels/chunk_3.tscn<>uid://dnu0rceo3bl7m::::res://enemies/skelly.tscn
 ui.gd::GDScript::-1::1745513348::0::1::::<>CanvasLayer<>::
-ui.tscn::PackedScene::6478987166949213765::1746121381::0::1::::<><>::res://ui.gd<>uid://1mt6tq6qrv1k::::res://assets/Kenney Thick.ttf<>uid://wwdil1cn3sse::::res://assets/health_bar.png
+ui.tscn::PackedScene::6478987166949213765::1746465081::0::1::::<><>::res://ui.gd<>uid://1mt6tq6qrv1k::::res://assets/Kenney Thick.ttf<>uid://wwdil1cn3sse::::res://assets/health_bar.png
 ::res://assets/::1746112619
 EndlessBlade.png::CompressedTexture2D::1112654323549418252::1745516775::1746112619::1::::<><>::
 health_bar.png::CompressedTexture2D::1589767925986697632::1745343977::1746112619::1::::<><>::
@@ -87,17 +87,17 @@ license.txt::TextFile::-1::1743088545::0::1::::<><>::
 5.png::CompressedTexture2D::3275780504130098962::1744047958::1746112619::1::::<><>::
 2304x1296.png::CompressedTexture2D::8018707973454527332::1744047958::1746112619::1::::<><>::
 ::res://download/::1746030883
-::res://enemies/::1746121381
+::res://enemies/::1746465081
 enemy.gd::GDScript::-1::1746121381::0::1::::<>CharacterBody2D<>::
-skelly.tscn::PackedScene::8114552968669948928::1746121381::0::1::::<><>::res://enemies/enemy.gd<>uid://dwd7f51hik30e::::res://monsters3/Skeleton/Walk.png<>uid://blxaghsre4243::::res://assets/audio/bone-break-sound-ver-2-269660.mp3
-::res://levels/::1746121382
-background.tscn::PackedScene::1482273413283732463::1746121381::0::1::::<><>::uid://dstb7h7ov7jqe::::res://background/5/2304x1296.png
-chunk1.tscn::PackedScene::63499747406060792::1746121381::0::1::::<><>::uid://vea3dq41ewm6::::res://levels/background.tscn<>uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png
-chunk2.tscn::PackedScene::6805402301651674918::1746121381::0::1::::<><>::uid://vea3dq41ewm6::::res://levels/background.tscn<>uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png
-chunk_3.tscn::PackedScene::8218854838236212632::1746121382::0::1::::<><>::uid://vea3dq41ewm6::::res://levels/background.tscn<>uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png
+skelly.tscn::PackedScene::8114552968669948928::1746465081::0::1::::<><>::res://enemies/enemy.gd<>uid://dwd7f51hik30e::::res://monsters3/Skeleton/Walk.png<>uid://blxaghsre4243::::res://assets/audio/bone-break-sound-ver-2-269660.mp3
+::res://levels/::1746465081
+background.tscn::PackedScene::1482273413283732463::1746465081::0::1::::<><>::uid://dstb7h7ov7jqe::::res://background/5/2304x1296.png
+chunk1.tscn::PackedScene::63499747406060792::1746465081::0::1::::<><>::uid://vea3dq41ewm6::::res://levels/background.tscn<>uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png
+chunk2.tscn::PackedScene::6805402301651674918::1746465081::0::1::::<><>::uid://vea3dq41ewm6::::res://levels/background.tscn<>uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png
+chunk_3.tscn::PackedScene::8218854838236212632::1746465081::0::1::::<><>::uid://vea3dq41ewm6::::res://levels/background.tscn<>uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png
 level.gd::GDScript::-1::1746121381::0::1::::LevelManager<>Node2D<>::
-level.tscn::PackedScene::5558306840774163582::1746121381::0::1::::<><>::res://levels/level.gd<>uid://bspy4rvse1yv8::::res://player/player.tscn<>uid://34ier75hsy1u::::res://assets/audio/eerie-prelude-23078.ogg
-spawn_chunk.tscn::PackedScene::8097778500373861275::1746121381::0::1::::<><>::uid://vea3dq41ewm6::::res://levels/background.tscn<>uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png
+level.tscn::PackedScene::5558306840774163582::1746465081::0::1::::<><>::res://levels/level.gd<>uid://bspy4rvse1yv8::::res://player/player.tscn<>uid://34ier75hsy1u::::res://assets/audio/eerie-prelude-23078.ogg
+spawn_chunk.tscn::PackedScene::8097778500373861275::1746465081::0::1::::<><>::uid://vea3dq41ewm6::::res://levels/background.tscn<>uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png
 ::res://monsters1/::1744047759
 ::res://monsters1/PNG/::1744047760
 ::res://monsters1/PNG/demon/::1746112619
@@ -330,9 +330,9 @@ Jump.png::CompressedTexture2D::5828081737794104663::1744047958::1746112614::1:::
 Run.png::CompressedTexture2D::6255341669932822830::1744047958::1746112614::1::::<><>::
 Special_attack.png::CompressedTexture2D::1237775493139734178::1744047958::1746112614::1::::<><>::
 Walk.png::CompressedTexture2D::8711563233310830326::1744047958::1746112614::1::::<><>::
-::res://player/::1746121381
+::res://player/::1746465081
 player.gd::GDScript::-1::1746121381::0::1::::<>CharacterBody2D<>::
-player.tscn::PackedScene::3682295457500296283::1746121381::0::1::::<><>::res://player/player.gd<>uid://55kc7plv4lg1::::res://sprites/2/Attack2.png<>uid://dmk6se6cl7nbm::::res://assets/audio/action_jump.mp3<>uid://cykp8bxmpd8hl::::res://ui.tscn<>uid://cp1twjkxgovl1::::res://assets/audio/slap-hurt-pain-sound-effect-262618.mp3<>uid://dkvp3sgk4kqp::::res://assets/audio/sword-sound-2-36274.mp3
+player.tscn::PackedScene::3682295457500296283::1746465081::0::1::::<><>::res://player/player.gd<>uid://55kc7plv4lg1::::res://sprites/2/Attack2.png<>uid://dmk6se6cl7nbm::::res://assets/audio/action_jump.mp3<>uid://cykp8bxmpd8hl::::res://ui.tscn<>uid://cp1twjkxgovl1::::res://assets/audio/slap-hurt-pain-sound-effect-262618.mp3<>uid://dkvp3sgk4kqp::::res://assets/audio/sword-sound-2-36274.mp3
 ::res://sprites/::1746112614
 COUPON.png::CompressedTexture2D::5109780671939711300::1744047958::1746112614::1::::<><>::
 license.txt::TextFile::-1::1743088545::0::1::::<><>::
@@ -594,6 +594,6 @@ Pointer3.png::CompressedTexture2D::1513372607952219091::1744047958::1746112615::
 Card.png::CompressedTexture2D::8401081269770803542::1744047958::1746112615::1::::<><>::
 Chest.png::CompressedTexture2D::4578768811804807063::1744047958::1746112615::1::::<><>::
 Money.png::CompressedTexture2D::7513144105176719924::1744047958::1746112615::1::::<><>::
-::res://ui/::1746121381
+::res://ui/::1746465081
 title.gd::GDScript::-1::1745513348::0::1::::<>Control<>::
-title.tscn::PackedScene::7516124964300617692::1746121381::0::1::::<><>::res://ui/title.gd<>uid://1mt6tq6qrv1k::::res://assets/Kenney Thick.ttf<>uid://34ier75hsy1u::::res://assets/audio/eerie-prelude-23078.ogg<>uid://vea3dq41ewm6::::res://levels/background.tscn
+title.tscn::PackedScene::7516124964300617692::1746465081::0::1::::<><>::res://ui/title.gd<>uid://1mt6tq6qrv1k::::res://assets/Kenney Thick.ttf<>uid://34ier75hsy1u::::res://assets/audio/eerie-prelude-23078.ogg<>uid://vea3dq41ewm6::::res://levels/background.tscn

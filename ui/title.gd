@@ -18,3 +18,7 @@ func format():
 	var minutes = floor(Global.highest_time / 60)
 	var seconds = fmod(Global.highest_time, 60)
 	return "%02d:%05.2f" % [minutes, seconds]
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
