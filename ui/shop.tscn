@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://ui/shop.gd" id="1_lvcpq"]
 [ext_resource type="FontFile" uid="uid://1mt6tq6qrv1k" path="res://assets/Kenney Thick.ttf" id="2_e6hdv"]
 
-[sub_resource type="Animation" id="Animation_rlaa7"]
-resource_name = "visible"
+[sub_resource type="Animation" id="Animation_qjyf3"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -33,8 +33,8 @@ tracks/0/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_qjyf3"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_rlaa7"]
+resource_name = "visible"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
