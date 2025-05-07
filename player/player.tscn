@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dkvp3sgk4kqp" path="res://assets/audio/sword-sound-2-36274.mp3" id="6_l1mrh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1o32"]
-size = Vector2(18.125, 25.125)
+size = Vector2(18, 25.125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8agkg"]
 size = Vector2(17, 25)
@@ -328,7 +328,7 @@ collision_layer = 16
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackPivot/AttackArea" groups=["player_attack"]]
-position = Vector2(17.9375, -14.4375)
+position = Vector2(18, -14.437)
 shape = SubResource("RectangleShape2D_w1o32")
 debug_color = Color(0.868136, 0.300206, 0.48499, 0.42)
 

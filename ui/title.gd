@@ -20,5 +20,5 @@ func format():
 	return "%02d:%05.2f" % [minutes, seconds]
 
 
-func _on_quit_pressed() -> void:
+func _on_exit_pressed() -> void:
 	get_tree().quit()

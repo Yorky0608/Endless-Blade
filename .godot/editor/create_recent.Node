@@ -1,4 +1,6 @@
+AnimationPlayer
 Button
+CanvasLayer
 Label
 AudioStreamPlayer
 Timer
@@ -10,6 +12,3 @@ Control
 HBoxContainer
 Container
 MarginContainer
-TextureProgressBar
-Marker2D
-Node

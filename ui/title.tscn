@@ -70,7 +70,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Quit:visible")
+tracks/4/path = NodePath("Exit:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -133,7 +133,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Quit:visible")
+tracks/4/path = NodePath("Exit:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -235,7 +235,7 @@ text = "Highest Survived Time - 00:00"
 label_settings = SubResource("LabelSettings_qejvs")
 horizontal_alignment = 2
 
-[node name="Quit" type="Button" parent="."]
+[node name="Exit" type="Button" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -245,7 +245,7 @@ offset_top = 20.0
 offset_right = 1000.1
 offset_bottom = 61.0
 theme = SubResource("Theme_51vup")
-text = "Quit"
+text = "Exit"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

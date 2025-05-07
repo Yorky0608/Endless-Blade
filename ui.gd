@@ -38,3 +38,9 @@ func format():
 
 func stop_timer():
 	timer_running = false
+
+func ui_invis():
+	$AnimationPlayer.play('invisible')
+
+func ui_vis():
+	$AnimationPlayer.play("visible")

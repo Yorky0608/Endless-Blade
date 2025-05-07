@@ -41,8 +41,7 @@ func _ready():
 	
 	# Load initial chunks
 	_on_player_chunk_changed(START_CHUNK_X)
-	
-	$Entities/Player/UI.show_message("Get Ready!")
+
 	spawn_timer = spawn_interval
 
 func _process(delta):

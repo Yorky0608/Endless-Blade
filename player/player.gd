@@ -8,6 +8,9 @@ signal update_health_bar(new_health)
 @export var run_speed = 150
 @export var jump_speed = -300
 @export var invincibility_time = 1.0
+@export var damage = 25  # The damage this attack deals
+@export var attack_radius = 18  # The radius at which the player can attack
+@export var life = 100
 
 var invincible = false
 
@@ -28,7 +31,6 @@ var walk_attack2_texture = preload("res://sprites/2/WalkAttack2.png")
 
 enum {IDLE, RUN, JUMP, HURT, DEAD, ATTACK}
 var state = IDLE
-var life = 100
 
 var can_attack = true
 
@@ -36,7 +38,6 @@ var can_attack = true
 const CHUNK_WIDTH = 1152  # Must match level.gd value
 var current_chunk_x = 0  # Now just tracking x-axis
 
-@export var damage: int = 25  # The damage this attack deals
 
 func _ready():
 	$AttackPivot/AttackArea.monitoring = false
@@ -240,3 +241,16 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 
 func _on_attack_cool_down_timeout() -> void:
 	can_attack = true
+
+func increase_damage(new_damage):
+	damage += new_damage
+
+func increase_attacK_radius(new_attack_radius):
+	attack_radius += new_attack_radius
+	$AttackPivot/AttackArea/CollisionShape2D.shape.size.x = attack_radius
+
+func increase_health(new_health):
+	life += new_health
+
+func increase_run_speed(new_run_speed):
+	run_speed += new_run_speed
