@@ -17,3 +17,19 @@ func _on_close_pressed() -> void:
 	ui.ui_vis()
 	var menu = get_parent().find_child("AnimationPlayer")
 	menu.play("visible")
+
+
+func _on_damage_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_attack_radius_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_run_speed_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_health_pressed() -> void:
+	pass # Replace with function body.

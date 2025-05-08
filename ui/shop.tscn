@@ -173,3 +173,7 @@ text = "Increase Health + 1"
 label_settings = SubResource("LabelSettings_sbkm0")
 
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Damage" to="." method="_on_damage_pressed"]
+[connection signal="pressed" from="AttackRadius" to="." method="_on_attack_radius_pressed"]
+[connection signal="pressed" from="RunSpeed" to="." method="_on_run_speed_pressed"]
+[connection signal="pressed" from="Health" to="." method="_on_health_pressed"]

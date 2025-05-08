@@ -13,3 +13,4 @@ res://ui/menu.tscn
 res://ui/shop.tscn
 res://levels/level.gd
 res://enemies/enemy.gd
+res://ui/shop.gd
