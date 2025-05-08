@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bspy4rvse1yv8" path="res://player/player.tscn" id="1_mnykd"]
 [ext_resource type="AudioStream" uid="uid://34ier75hsy1u" path="res://assets/audio/eerie-prelude-23078.ogg" id="3_13cds"]
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" groups=["level_manager"]]
 script = ExtResource("1_3ep40")
 
 [node name="Entities" type="Node" parent="."]

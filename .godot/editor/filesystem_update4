@@ -11,3 +11,5 @@ res://ui/title.tscn
 res://levels/chunk_3.tscn
 res://ui/menu.tscn
 res://ui/shop.tscn
+res://levels/level.gd
+res://enemies/enemy.gd

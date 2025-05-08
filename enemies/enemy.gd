@@ -1,8 +1,13 @@
 extends CharacterBody2D
 
+var level_bounds_left := 0.0
+var level_bounds_right := 0.0
+var bounds_check_timer := 0.0
+const BOUNDS_CHECK_INTERVAL := 1.0  # Check every second
+
 @onready var player = get_tree().get_first_node_in_group("player")  # More reliable player reference
 
-@export var speed = 160
+@export var speed = 180
 @export var jump_speed = -350
 @export var jump_check_distance = 10
 @export var gravity = 750
@@ -13,10 +18,19 @@ extends CharacterBody2D
 var dead = false
 var death_texture = preload("res://monsters3/Skeleton/Dead.png")
 
+func _read():
+	_update_level_bounds()
+
 func _physics_process(delta):
 	if dead: 
 		return
 	
+	bounds_check_timer += delta
+	if bounds_check_timer >= BOUNDS_CHECK_INTERVAL:
+		_update_level_bounds()
+		_check_out_of_bounds()
+		bounds_check_timer = 0.0
+
 	velocity.y += gravity * delta
 
 	if player and not dead:
@@ -61,3 +75,20 @@ func death():
 	
 	await $AnimationPlayer.animation_finished
 	queue_free()
+
+func _update_level_bounds():
+	# Get the level manager to access chunk information
+	var level_manager = get_tree().get_first_node_in_group("level_manager")
+	if level_manager:
+		# Calculate bounds based on loaded chunks
+		var loaded_chunks = level_manager.loaded_chunks
+		if not loaded_chunks.is_empty():
+			var min_x = loaded_chunks.keys().min() * level_manager.CHUNK_WIDTH
+			var max_x = (loaded_chunks.keys().max() + 1) * level_manager.CHUNK_WIDTH
+			level_bounds_left = min_x - level_manager.CHUNK_WIDTH  # Add buffer of one chunk
+			level_bounds_right = max_x + level_manager.CHUNK_WIDTH  # Add buffer of one chunk
+
+func _check_out_of_bounds():
+	# If enemy is too far left or right of loaded chunks, remove it
+	if global_position.x < level_bounds_left or global_position.x > level_bounds_right:
+		queue_free()

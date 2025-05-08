@@ -98,6 +98,7 @@ func _on_player_died():
 	GameState.restart()
 
 func spawn_skeletons():
+	print("spawn")
 	# Count currently alive skeletons
 	var alive_skeletons = 0
 	for child in get_children():
@@ -114,7 +115,7 @@ func spawn_skeletons():
 
 	for i in skeletons_to_spawn:
 		var skeleton = skeleton_scene.instantiate()
-		add_child(skeleton)
+		$Entities.add_child(skeleton)
 		skeleton.global_position = _get_safe_spawn_position()
 
 func _get_safe_spawn_position() -> Vector2:

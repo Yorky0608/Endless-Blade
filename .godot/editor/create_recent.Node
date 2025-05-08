@@ -1,7 +1,7 @@
-AnimationPlayer
 Button
-CanvasLayer
 Label
+AnimationPlayer
+CanvasLayer
 AudioStreamPlayer
 Timer
 CollisionShape2D
