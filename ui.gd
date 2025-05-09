@@ -6,7 +6,7 @@ var survival_time: float = 0.0
 var timer_running: bool = true
 var survived_time = 0
 
-var current_score = 2000
+var current_score = 0
 
 func _ready():
 	var player = get_parent()
