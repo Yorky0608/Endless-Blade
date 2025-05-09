@@ -15,6 +15,7 @@ func toggle_pause():
 		$Shop2/AnimationPlayer.play("invisible")
 		var ui = get_node("/root/Main/Level/Entities/Player/UI")
 		ui.ui_vis()
+		await get_tree().create_timer(1.0).timeout
 	get_tree().paused = paused
 
 # Called when the node enters the scene tree for the first time.
@@ -23,7 +24,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	var player = get_node("/root/Main/Level/Entities/Player")
+	if player.dead:
+		set_process_input(false)
 
 func _on_quit_pressed() -> void:
 	toggle_pause()

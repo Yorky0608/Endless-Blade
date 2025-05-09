@@ -34,6 +34,7 @@ enum {IDLE, RUN, JUMP, HURT, DEAD, ATTACK}
 var state = IDLE
 
 var can_attack = true
+var dead = false
 
 # Chunk tracking (simplified for horizontal only)
 const CHUNK_WIDTH = 1152  # Must match level.gd value
@@ -142,6 +143,7 @@ func change_state(new_state, texture, animation):
 			$Sprite2D.set_hframes(8)
 			$AnimationPlayer.play(animation)
 		DEAD:
+			dead = true
 			velocity = Vector2.ZERO
 			set_physics_process(false)  # Disable physics updates
 			$AttackPivot/AttackArea.monitoring = false
@@ -212,7 +214,7 @@ func take_damage(node, amount):
 		velocity.x = -100
 		velocity.y = -100
 	health -= amount
-	hurt()
+	
 
 	invincible = true
 	$HitBox.set_deferred("monitoring", false)
@@ -222,7 +224,11 @@ func take_damage(node, amount):
 	$HitBox.monitoring = true
 	
 	if health <= 0:
+		dead = true
 		change_state(DEAD, death_texture, "Death")
+		hurt()
+	else:
+		hurt()
 
 func _on_attack_area_area_entered(area: Area2D):
 	if area.is_in_group("enemy_hitbox"):
