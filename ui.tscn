@@ -22,7 +22,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
+tracks/0/path = NodePath("SurvivalTimeUpdate:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -37,7 +37,7 @@ resource_name = "invisible"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
+tracks/0/path = NodePath("SurvivalTimeUpdate:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -52,7 +52,7 @@ resource_name = "visible"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
+tracks/0/path = NodePath("SurvivalTimeUpdate:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -73,6 +73,7 @@ _data = {
 script = ExtResource("1_ttjfx")
 
 [node name="Score" type="Label" parent="."]
+process_mode = 3
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 245.0
@@ -98,6 +99,7 @@ text = "Get Ready!"
 label_settings = SubResource("LabelSettings_vy8r4")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
+process_mode = 3
 offset_left = 22.0
 offset_top = 70.0
 offset_right = 178.0

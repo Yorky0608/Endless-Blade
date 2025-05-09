@@ -98,7 +98,6 @@ func _on_player_died():
 	GameState.restart()
 
 func spawn_skeletons():
-	print("spawn")
 	# Count currently alive skeletons
 	var alive_skeletons = 0
 	for child in get_children():

@@ -6,12 +6,13 @@ var survival_time: float = 0.0
 var timer_running: bool = true
 var survived_time = 0
 
-var current_score = 0
+var current_score = 2000
 
 func _ready():
+	var player = get_parent()
 	# Initialize display
 	update_score(current_score)
-	update_health_bar(100)  # Assuming max health is 100
+	update_health_bar(player.health)
 
 func _process(delta):
 	if timer_running:

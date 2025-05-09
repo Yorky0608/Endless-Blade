@@ -10,7 +10,8 @@ signal update_health_bar(new_health)
 @export var invincibility_time = 1.0
 @export var damage = 25  # The damage this attack deals
 @export var attack_radius = 18  # The radius at which the player can attack
-@export var life = 100
+@export var health = 100
+@export var max_health = 100
 
 var invincible = false
 
@@ -61,14 +62,14 @@ func reset(_position):
 	position = _position
 	show()
 	change_state(IDLE, idle_texture, "Idle")
-	life = 100
+	health = 100
 	current_chunk_x = floor(position.x / CHUNK_WIDTH)
 
 # Modify hurt function:
 func hurt():
 	var ui = get_tree().get_first_node_in_group("ui")
 	if ui:
-		ui.update_health_bar(life)
+		ui.update_health_bar(health)
 	if state != HURT:
 		$HurtSound.play()
 		change_state(HURT, hurt_texture, "Hurt")
@@ -172,6 +173,7 @@ func change_state(new_state, texture, animation):
 			$AnimationPlayer.speed_scale = 3.0
 			# Reuse for a potential dash?
 			#$AttackCoolDown.start(0.5)
+			$AttackPivot/AttackArea.monitoring = false
 			
 			if texture == run_attack2_texture or texture == run_attack1_texture:
 				change_state(RUN, run_texture, "Run")
@@ -209,7 +211,7 @@ func take_damage(node, amount):
 	else:
 		velocity.x = -100
 		velocity.y = -100
-	life -= amount
+	health -= amount
 	hurt()
 
 	invincible = true
@@ -219,7 +221,7 @@ func take_damage(node, amount):
 	invincible = false
 	$HitBox.monitoring = true
 	
-	if life <= 0:
+	if health <= 0:
 		change_state(DEAD, death_texture, "Death")
 
 func _on_attack_area_area_entered(area: Area2D):
@@ -241,16 +243,3 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 
 func _on_attack_cool_down_timeout() -> void:
 	can_attack = true
-
-func increase_damage(new_damage):
-	damage += new_damage
-
-func increase_attacK_radius(new_attack_radius):
-	attack_radius += new_attack_radius
-	$AttackPivot/AttackArea/CollisionShape2D.shape.size.x = attack_radius
-
-func increase_health(new_health):
-	life += new_health
-
-func increase_run_speed(new_run_speed):
-	run_speed += new_run_speed

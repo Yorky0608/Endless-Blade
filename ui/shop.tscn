@@ -101,9 +101,9 @@ libraries = {
 autoplay = "invisible"
 
 [node name="Close" type="Button" parent="."]
-offset_left = 20.0
+offset_left = 980.0
 offset_top = 20.0
-offset_right = 178.0
+offset_right = 1138.0
 offset_bottom = 62.0
 theme = SubResource("Theme_0x2lm")
 text = "Close"
@@ -145,7 +145,8 @@ offset_left = 20.0
 offset_top = 136.0
 offset_right = 349.0
 offset_bottom = 177.0
-text = "Increase Damage + 1"
+text = "Increase Damage + 1
+Price: 500"
 label_settings = SubResource("LabelSettings_qax3q")
 
 [node name="UpgradeAttackRadius" type="Label" parent="."]
@@ -153,7 +154,8 @@ offset_left = 680.0
 offset_top = 136.0
 offset_right = 1137.0
 offset_bottom = 164.0
-text = "Increase Attack Radius + 1"
+text = "Increase Attack Radius + 1
+Price: 500"
 label_settings = SubResource("LabelSettings_yr86l")
 
 [node name="UpgradeRunSpeed" type="Label" parent="."]
@@ -161,7 +163,8 @@ offset_left = 20.0
 offset_top = 400.0
 offset_right = 402.0
 offset_bottom = 428.0
-text = "Increase Run Speed + 5"
+text = "Increase Run Speed + 5
+Price: 500"
 label_settings = SubResource("LabelSettings_nipft")
 
 [node name="UpgradeHealth" type="Label" parent="."]
@@ -169,7 +172,8 @@ offset_left = 800.0
 offset_top = 400.0
 offset_right = 1129.0
 offset_bottom = 428.0
-text = "Increase Health + 1"
+text = "Increase Health + 5
+Price: 500"
 label_settings = SubResource("LabelSettings_sbkm0")
 
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
