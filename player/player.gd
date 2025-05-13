@@ -205,15 +205,22 @@ func _physics_process(delta):
 func take_damage(node, amount):
 	#invincible = true
 	if invincible or state == DEAD:
-		velocity.x = 50
 		return
+	
+	health -= amount
+	if health <= 0:
+		dead = true
+		change_state(DEAD, death_texture, "Death")
+		hurt()
+	else:
+		hurt()
+	
 	if not node.get_node("Sprite2D").flip_h:
 		velocity.x = 100
 		velocity.y = -100
 	else:
 		velocity.x = -100
 		velocity.y = -100
-	health -= amount
 	
 
 	invincible = true
@@ -222,13 +229,7 @@ func take_damage(node, amount):
 	await $InvincibilityTimer.timeout
 	invincible = false
 	$HitBox.monitoring = true
-	
-	if health <= 0:
-		dead = true
-		change_state(DEAD, death_texture, "Death")
-		hurt()
-	else:
-		hurt()
+
 
 func _on_attack_area_area_entered(area: Area2D):
 	if area.is_in_group("enemy_hitbox"):

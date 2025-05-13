@@ -12,3 +12,4 @@ res://levels/chunk_3.tscn
 res://ui/menu.tscn
 res://ui/shop.tscn
 res://ui/menu.gd
+res://player/player.gd
