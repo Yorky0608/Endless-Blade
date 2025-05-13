@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 		set_process_input(false)
 
 func _on_quit_pressed() -> void:
-	toggle_pause()
+	get_tree().paused = false
 	GameState.restart()
 
 

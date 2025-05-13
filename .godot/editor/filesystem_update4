@@ -1,5 +1,4 @@
 res://enemies/skelly.tscn
-res://player/player.gd
 res://player/player.tscn
 res://tile_setup.tscn
 res://levels/background.tscn
@@ -12,7 +11,4 @@ res://ui/title.tscn
 res://levels/chunk_3.tscn
 res://ui/menu.tscn
 res://ui/shop.tscn
-res://ui/shop.gd
-res://ui.gd
-res://levels/level.gd
 res://ui/menu.gd
