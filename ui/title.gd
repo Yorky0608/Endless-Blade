@@ -7,8 +7,8 @@ func _input(event):
 
 
 func _ready():
-	$Score.text = "High Score - " + str(Global.high_score)
-	$SurvivalTimeUpdate.text = "Highest Survived Time - " + format()
+	$Control/Score.text = "High Score - " + str(Global.high_score)
+	$Control/SurvivalTimeUpdate.text = "Highest Survived Time - " + format()
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

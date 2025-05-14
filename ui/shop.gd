@@ -14,24 +14,24 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var ui = get_node("/root/Main/Level/Entities/Player/UI")
 	if ui.current_score < dam_price:
-		$Damage.disabled = true
+		$Control/Damage.disabled = true
 	else:
-		$Damage.disabled = false
+		$Control/Damage.disabled = false
 	
 	if ui.current_score < rad_price:
-		$AttackRadius.disabled = true
+		$Control2/AttackRadius.disabled = true
 	else:
-		$AttackRadius.disabled = false
+		$Control2/AttackRadius.disabled = false
 	
 	if ui.current_score < run_price:
-		$RunSpeed.disabled = true
+		$Control/RunSpeed.disabled = true
 	else:
-		$RunSpeed.disabled = false
+		$Control/RunSpeed.disabled = false
 	
 	if ui.current_score < health_price:
-		$Health.disabled = true
+		$Control2/Health.disabled = true
 	else:
-		$Health.disabled = false
+		$Control2/Health.disabled = false
 	
 	ui.update_score(ui.current_score)
 

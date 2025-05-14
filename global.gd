@@ -7,6 +7,7 @@ var time_file = "user://ht.dat"
 
 func _ready():
 	load_score()
+
 func load_score():
 	if FileAccess.file_exists(score_file):
 		var file = FileAccess.open(score_file,

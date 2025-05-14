@@ -55,23 +55,7 @@ _data = {
 "visible": SubResource("Animation_rlaa7")
 }
 
-[sub_resource type="Theme" id="Theme_0x2lm"]
-default_font = ExtResource("2_e6hdv")
-default_font_size = 30
-
 [sub_resource type="Theme" id="Theme_cxok0"]
-default_font = ExtResource("2_e6hdv")
-default_font_size = 20
-
-[sub_resource type="Theme" id="Theme_y4npk"]
-default_font = ExtResource("2_e6hdv")
-default_font_size = 20
-
-[sub_resource type="Theme" id="Theme_rbp42"]
-default_font = ExtResource("2_e6hdv")
-default_font_size = 20
-
-[sub_resource type="Theme" id="Theme_s6ede"]
 default_font = ExtResource("2_e6hdv")
 default_font_size = 20
 
@@ -79,13 +63,29 @@ default_font_size = 20
 font = ExtResource("2_e6hdv")
 font_size = 20
 
-[sub_resource type="LabelSettings" id="LabelSettings_yr86l"]
-font = ExtResource("2_e6hdv")
-font_size = 20
+[sub_resource type="Theme" id="Theme_rbp42"]
+default_font = ExtResource("2_e6hdv")
+default_font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_nipft"]
 font = ExtResource("2_e6hdv")
 font_size = 20
+
+[sub_resource type="Theme" id="Theme_0x2lm"]
+default_font = ExtResource("2_e6hdv")
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_y4npk"]
+default_font = ExtResource("2_e6hdv")
+default_font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_yr86l"]
+font = ExtResource("2_e6hdv")
+font_size = 20
+
+[sub_resource type="Theme" id="Theme_s6ede"]
+default_font = ExtResource("2_e6hdv")
+default_font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_sbkm0"]
 font = ExtResource("2_e6hdv")
@@ -100,15 +100,13 @@ libraries = {
 }
 autoplay = "invisible"
 
-[node name="Close" type="Button" parent="."]
-offset_left = 980.0
-offset_top = 20.0
-offset_right = 1138.0
-offset_bottom = 62.0
-theme = SubResource("Theme_0x2lm")
-text = "Close"
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Damage" type="Button" parent="."]
+[node name="Damage" type="Button" parent="Control"]
 offset_left = 45.0
 offset_top = 200.0
 offset_right = 323.0
@@ -116,15 +114,16 @@ offset_bottom = 231.0
 theme = SubResource("Theme_cxok0")
 text = "Upgrade Damage"
 
-[node name="AttackRadius" type="Button" parent="."]
-offset_left = 700.0
-offset_top = 200.0
-offset_right = 1123.0
-offset_bottom = 231.0
-theme = SubResource("Theme_y4npk")
-text = "Upgrade Attack Radiius"
+[node name="UpgradeDamage" type="Label" parent="Control"]
+offset_left = 20.0
+offset_top = 136.0
+offset_right = 349.0
+offset_bottom = 195.0
+text = "Increase Damage + 1
+Price: 500"
+label_settings = SubResource("LabelSettings_qax3q")
 
-[node name="RunSpeed" type="Button" parent="."]
+[node name="RunSpeed" type="Button" parent="Control"]
 offset_left = 45.0
 offset_top = 464.0
 offset_right = 368.0
@@ -132,52 +131,68 @@ offset_bottom = 495.0
 theme = SubResource("Theme_rbp42")
 text = "Upgrade Run Speed"
 
-[node name="Health" type="Button" parent="."]
-offset_left = 830.0
-offset_top = 464.0
-offset_right = 1108.0
-offset_bottom = 495.0
-theme = SubResource("Theme_s6ede")
-text = "Upgrade Health"
-
-[node name="UpgradeDamage" type="Label" parent="."]
-offset_left = 20.0
-offset_top = 136.0
-offset_right = 349.0
-offset_bottom = 177.0
-text = "Increase Damage + 1
-Price: 500"
-label_settings = SubResource("LabelSettings_qax3q")
-
-[node name="UpgradeAttackRadius" type="Label" parent="."]
-offset_left = 680.0
-offset_top = 136.0
-offset_right = 1137.0
-offset_bottom = 164.0
-text = "Increase Attack Radius + 1
-Price: 500"
-label_settings = SubResource("LabelSettings_yr86l")
-
-[node name="UpgradeRunSpeed" type="Label" parent="."]
+[node name="UpgradeRunSpeed" type="Label" parent="Control"]
 offset_left = 20.0
 offset_top = 400.0
 offset_right = 402.0
-offset_bottom = 428.0
+offset_bottom = 459.0
 text = "Increase Run Speed + 5
 Price: 500"
 label_settings = SubResource("LabelSettings_nipft")
 
-[node name="UpgradeHealth" type="Label" parent="."]
-offset_left = 800.0
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Close" type="Button" parent="Control2"]
+offset_left = -178.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 62.0
+theme = SubResource("Theme_0x2lm")
+text = "Close"
+
+[node name="AttackRadius" type="Button" parent="Control2"]
+offset_left = -463.0
+offset_top = 200.0
+offset_right = -40.0
+offset_bottom = 231.0
+theme = SubResource("Theme_y4npk")
+text = "Upgrade Attack Radiius"
+
+[node name="UpgradeAttackRadius" type="Label" parent="Control2"]
+offset_left = -477.0
+offset_top = 136.0
+offset_right = -20.0
+offset_bottom = 195.0
+text = "Increase Attack Radius + 1
+Price: 500"
+label_settings = SubResource("LabelSettings_yr86l")
+
+[node name="Health" type="Button" parent="Control2"]
+offset_left = -318.0
+offset_top = 464.0
+offset_right = -40.0
+offset_bottom = 495.0
+theme = SubResource("Theme_s6ede")
+text = "Upgrade Health"
+
+[node name="UpgradeHealth" type="Label" parent="Control2"]
+offset_left = -357.0
 offset_top = 400.0
-offset_right = 1129.0
-offset_bottom = 428.0
+offset_right = -20.0
+offset_bottom = 459.0
 text = "Increase Health + 5
 Price: 500"
 label_settings = SubResource("LabelSettings_sbkm0")
 
-[connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
-[connection signal="pressed" from="Damage" to="." method="_on_damage_pressed"]
-[connection signal="pressed" from="AttackRadius" to="." method="_on_attack_radius_pressed"]
-[connection signal="pressed" from="RunSpeed" to="." method="_on_run_speed_pressed"]
-[connection signal="pressed" from="Health" to="." method="_on_health_pressed"]
+[connection signal="pressed" from="Control/Damage" to="." method="_on_damage_pressed"]
+[connection signal="pressed" from="Control/RunSpeed" to="." method="_on_run_speed_pressed"]
+[connection signal="pressed" from="Control2/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Control2/AttackRadius" to="." method="_on_attack_radius_pressed"]
+[connection signal="pressed" from="Control2/Health" to="." method="_on_health_pressed"]

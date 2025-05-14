@@ -1,4 +1,8 @@
+VBoxContainer
+Control
 Label
+CenterContainer
+HBoxContainer
 Button
 AnimationPlayer
 CanvasLayer
@@ -7,8 +11,4 @@ Timer
 CollisionShape2D
 Node2D
 Area2D
-VBoxContainer
-Control
-HBoxContainer
 Container
-MarginContainer

@@ -1,12 +1,14 @@
 extends CanvasLayer
-@onready var health_bar = $HealthBar
-@onready var score_label = $Score
+@onready var health_bar = $Control/HealthBar
+@onready var score_label = $Control/Score
 
 var survival_time: float = 0.0
 var timer_running: bool = true
 var survived_time = 0
 
 var current_score = 0
+
+
 
 func _ready():
 	var player = get_parent()
@@ -17,7 +19,7 @@ func _ready():
 func _process(delta):
 	if timer_running:
 		survival_time += delta
-		$SurvivalTimeUpdate.text = format()
+		$Control2/SurvivalTimeUpdate.text = format()
 
 func update_score(value):
 	current_score = value
@@ -27,10 +29,10 @@ func update_health_bar(value):
 	health_bar.value = value
 
 func show_message(text):
-	$Message.text = text
-	$Message.show()
+	$Control3/Message.text = text
+	$Control3/Message.show()
 	await get_tree().create_timer(2).timeout
-	$Message.hide()
+	$Control3/Message.hide()
 
 func format():
 	var minutes = floor(survival_time / 60)
