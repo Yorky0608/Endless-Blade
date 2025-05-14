@@ -56,15 +56,15 @@ _data = {
 "visible": SubResource("Animation_mkux8")
 }
 
+[sub_resource type="Theme" id="Theme_twqdy"]
+default_font = ExtResource("1_xqa6q")
+default_font_size = 30
+
 [sub_resource type="Theme" id="Theme_u8r6l"]
 default_font = ExtResource("1_xqa6q")
 default_font_size = 30
 
 [sub_resource type="Theme" id="Theme_3ffjh"]
-default_font = ExtResource("1_xqa6q")
-default_font_size = 30
-
-[sub_resource type="Theme" id="Theme_twqdy"]
 default_font = ExtResource("1_xqa6q")
 default_font_size = 30
 
@@ -100,6 +100,15 @@ offset_bottom = 67.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Resume" type="Button" parent="Control/VBoxContainer"]
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_twqdy")
+text = "Resume"
+metadata/_edit_use_anchors_ = true
+
 [node name="Shop" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -116,17 +125,8 @@ theme = SubResource("Theme_3ffjh")
 text = "Quit"
 metadata/_edit_use_anchors_ = true
 
-[node name="Resume" type="Button" parent="Control/VBoxContainer"]
-layout_direction = 1
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = SubResource("Theme_twqdy")
-text = "Resume"
-metadata/_edit_use_anchors_ = true
-
 [node name="Shop2" parent="." instance=ExtResource("3_3njon")]
 
+[connection signal="pressed" from="Control/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Shop" to="." method="_on_shop_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
