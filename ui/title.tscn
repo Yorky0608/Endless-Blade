@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://34ier75hsy1u" path="res://assets/audio/eerie-prelude-23078.ogg" id="4_7hwli"]
 [ext_resource type="PackedScene" uid="uid://vea3dq41ewm6" path="res://levels/background.tscn" id="4_yw284"]
 [ext_resource type="PackedScene" uid="uid://pr4dc0k8fu4b" path="res://scale.tscn" id="5_cpdym"]
+[ext_resource type="Theme" uid="uid://csrxccdqow62n" path="res://ui/menu.tres" id="6_gt5hj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wjyqb"]
 font = ExtResource("3_175md")
@@ -206,10 +207,6 @@ font_size = 30
 font = ExtResource("3_175md")
 font_size = 30
 
-[sub_resource type="Theme" id="Theme_51vup"]
-default_font = ExtResource("3_175md")
-default_font_size = 30
-
 [node name="Title" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -338,7 +335,7 @@ offset_left = -148.0
 offset_top = 20.0
 offset_right = -20.0
 offset_bottom = 62.0
-theme = SubResource("Theme_51vup")
+theme = ExtResource("6_gt5hj")
 text = "Exit"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://drpasabq4wjcq"]
+[gd_scene load_steps=12 format=3 uid="uid://drpasabq4wjcq"]
 
 [ext_resource type="Script" path="res://ui/shop.gd" id="1_lvcpq"]
 [ext_resource type="FontFile" uid="uid://1mt6tq6qrv1k" path="res://assets/Kenney Thick.ttf" id="2_e6hdv"]
+[ext_resource type="Theme" uid="uid://dlxgcekwp6ob" path="res://ui/shop.tres" id="2_t4vr5"]
 
 [sub_resource type="Animation" id="Animation_qjyf3"]
 length = 0.001
@@ -55,37 +56,17 @@ _data = {
 "visible": SubResource("Animation_rlaa7")
 }
 
-[sub_resource type="Theme" id="Theme_cxok0"]
-default_font = ExtResource("2_e6hdv")
-default_font_size = 20
-
 [sub_resource type="LabelSettings" id="LabelSettings_qax3q"]
 font = ExtResource("2_e6hdv")
 font_size = 20
-
-[sub_resource type="Theme" id="Theme_rbp42"]
-default_font = ExtResource("2_e6hdv")
-default_font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_nipft"]
 font = ExtResource("2_e6hdv")
 font_size = 20
 
-[sub_resource type="Theme" id="Theme_0x2lm"]
-default_font = ExtResource("2_e6hdv")
-default_font_size = 30
-
-[sub_resource type="Theme" id="Theme_y4npk"]
-default_font = ExtResource("2_e6hdv")
-default_font_size = 20
-
 [sub_resource type="LabelSettings" id="LabelSettings_yr86l"]
 font = ExtResource("2_e6hdv")
 font_size = 20
-
-[sub_resource type="Theme" id="Theme_s6ede"]
-default_font = ExtResource("2_e6hdv")
-default_font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_sbkm0"]
 font = ExtResource("2_e6hdv")
@@ -107,14 +88,16 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Damage" type="Button" parent="Control"]
+layout_mode = 0
 offset_left = 45.0
 offset_top = 200.0
 offset_right = 323.0
 offset_bottom = 231.0
-theme = SubResource("Theme_cxok0")
+theme = ExtResource("2_t4vr5")
 text = "Upgrade Damage"
 
 [node name="UpgradeDamage" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 136.0
 offset_right = 349.0
@@ -124,14 +107,16 @@ Price: 500"
 label_settings = SubResource("LabelSettings_qax3q")
 
 [node name="RunSpeed" type="Button" parent="Control"]
+layout_mode = 0
 offset_left = 45.0
 offset_top = 464.0
 offset_right = 368.0
 offset_bottom = 495.0
-theme = SubResource("Theme_rbp42")
+theme = ExtResource("2_t4vr5")
 text = "Upgrade Run Speed"
 
 [node name="UpgradeRunSpeed" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 400.0
 offset_right = 402.0
@@ -150,22 +135,25 @@ offset_bottom = 40.0
 grow_horizontal = 0
 
 [node name="Close" type="Button" parent="Control2"]
+layout_mode = 0
 offset_left = -178.0
 offset_top = 20.0
 offset_right = -20.0
 offset_bottom = 62.0
-theme = SubResource("Theme_0x2lm")
+theme = ExtResource("2_t4vr5")
 text = "Close"
 
 [node name="AttackRadius" type="Button" parent="Control2"]
+layout_mode = 0
 offset_left = -463.0
 offset_top = 200.0
 offset_right = -40.0
 offset_bottom = 231.0
-theme = SubResource("Theme_y4npk")
+theme = ExtResource("2_t4vr5")
 text = "Upgrade Attack Radiius"
 
 [node name="UpgradeAttackRadius" type="Label" parent="Control2"]
+layout_mode = 0
 offset_left = -477.0
 offset_top = 136.0
 offset_right = -20.0
@@ -175,14 +163,16 @@ Price: 500"
 label_settings = SubResource("LabelSettings_yr86l")
 
 [node name="Health" type="Button" parent="Control2"]
+layout_mode = 0
 offset_left = -318.0
 offset_top = 464.0
 offset_right = -40.0
 offset_bottom = 495.0
-theme = SubResource("Theme_s6ede")
+theme = ExtResource("2_t4vr5")
 text = "Upgrade Health"
 
 [node name="UpgradeHealth" type="Label" parent="Control2"]
+layout_mode = 0
 offset_left = -357.0
 offset_top = 400.0
 offset_right = -20.0

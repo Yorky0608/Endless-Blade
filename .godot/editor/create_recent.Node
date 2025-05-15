@@ -1,9 +1,9 @@
+Button
 VBoxContainer
 Control
 Label
 CenterContainer
 HBoxContainer
-Button
 AnimationPlayer
 CanvasLayer
 AudioStreamPlayer

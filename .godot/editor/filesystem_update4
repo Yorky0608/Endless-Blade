@@ -1,4 +1,6 @@
-res://ui/title.tscn
+res://ui/shop.tscn
+res://ui/new_style_box_flat.tres
+res://ui/menu.tres
 res://enemies/skelly.tscn
 res://player/player.tscn
 res://tile_setup.tscn
@@ -8,13 +10,8 @@ res://levels/chunk2.tscn
 res://levels/level.tscn
 res://levels/spawn_chunk.tscn
 res://ui.tscn
+res://ui/title.tscn
 res://levels/chunk_3.tscn
 res://ui/menu.tscn
-res://ui/shop.tscn
-res://global.gd
-res://scale.gd
 res://scale.tscn
-res://ui/menu.gd
-res://ui.gd
-res://ui/title.gd
-res://ui/shop.gd
+res://ui/shop.tres

@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1lb4w20pjyap"]
+[gd_scene load_steps=8 format=3 uid="uid://d1lb4w20pjyap"]
 
 [ext_resource type="Script" path="res://ui/menu.gd" id="1_bo1qd"]
-[ext_resource type="FontFile" uid="uid://1mt6tq6qrv1k" path="res://assets/Kenney Thick.ttf" id="1_xqa6q"]
+[ext_resource type="Theme" uid="uid://csrxccdqow62n" path="res://ui/menu.tres" id="2_f4735"]
 [ext_resource type="PackedScene" uid="uid://drpasabq4wjcq" path="res://ui/shop.tscn" id="3_3njon"]
 
 [sub_resource type="Animation" id="Animation_6vqvs"]
@@ -56,18 +56,6 @@ _data = {
 "visible": SubResource("Animation_mkux8")
 }
 
-[sub_resource type="Theme" id="Theme_twqdy"]
-default_font = ExtResource("1_xqa6q")
-default_font_size = 30
-
-[sub_resource type="Theme" id="Theme_u8r6l"]
-default_font = ExtResource("1_xqa6q")
-default_font_size = 30
-
-[sub_resource type="Theme" id="Theme_3ffjh"]
-default_font = ExtResource("1_xqa6q")
-default_font_size = 30
-
 [node name="Menu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_bo1qd")
@@ -94,36 +82,29 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -96.0
-offset_top = -67.0
+offset_top = -83.0
 offset_right = 96.0
-offset_bottom = 67.0
+offset_bottom = 83.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_f4735")
+theme_override_constants/separation = 40
 
 [node name="Resume" type="Button" parent="Control/VBoxContainer"]
-layout_direction = 1
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = SubResource("Theme_twqdy")
 text = "Resume"
-metadata/_edit_use_anchors_ = true
 
 [node name="Shop" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = SubResource("Theme_u8r6l")
 text = "Shop"
-metadata/_edit_use_anchors_ = true
+
+[node name="Settings" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
 
 [node name="Quit" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = SubResource("Theme_3ffjh")
 text = "Quit"
-metadata/_edit_use_anchors_ = true
 
 [node name="Shop2" parent="." instance=ExtResource("3_3njon")]
 
