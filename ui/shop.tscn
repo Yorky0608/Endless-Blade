@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://drpasabq4wjcq"]
+[gd_scene load_steps=13 format=3 uid="uid://drpasabq4wjcq"]
 
 [ext_resource type="Script" path="res://ui/shop.gd" id="1_lvcpq"]
 [ext_resource type="FontFile" uid="uid://1mt6tq6qrv1k" path="res://assets/Kenney Thick.ttf" id="2_e6hdv"]
 [ext_resource type="Theme" uid="uid://dlxgcekwp6ob" path="res://ui/shop.tres" id="2_t4vr5"]
+[ext_resource type="Theme" uid="uid://csrxccdqow62n" path="res://ui/menu.tres" id="4_myh5m"]
 
 [sub_resource type="Animation" id="Animation_qjyf3"]
 length = 0.001
@@ -140,7 +141,7 @@ offset_left = -178.0
 offset_top = 20.0
 offset_right = -20.0
 offset_bottom = 62.0
-theme = ExtResource("2_t4vr5")
+theme = ExtResource("4_myh5m")
 text = "Close"
 
 [node name="AttackRadius" type="Button" parent="Control2"]
