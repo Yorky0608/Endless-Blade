@@ -115,7 +115,7 @@ func spawn_skeletons():
 
 	for i in skeletons_to_spawn:
 		var skeleton = skeleton_scene.instantiate()
-		$Entities.add_child(skeleton)
+		$Entities/Enemies.add_child(skeleton)
 		skeleton.global_position = _get_safe_spawn_position()
 
 func _get_safe_spawn_position() -> Vector2:
