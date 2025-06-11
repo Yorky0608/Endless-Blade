@@ -75,3 +75,7 @@ func _on_health_pressed() -> void:
 	ui.current_score -= health_price
 	ui.find_child("HealthBar").max_value = player.max_health
 	ui.update_health_bar(player.health)
+
+
+func _on_dash_time_pressed() -> void:
+	pass # Replace with function body.

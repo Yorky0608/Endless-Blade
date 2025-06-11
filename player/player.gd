@@ -44,6 +44,7 @@ var dashing = false
 var dash_speed = 300
 var dash_time = 0.2
 var dash_timer = 0.0
+var dash_ability = false
 
 
 func _ready():
@@ -108,7 +109,7 @@ func get_input():
 			change_state(ATTACK, run_attack2_texture, "RunAttack2")
 		elif state == JUMP and attack:
 			change_state(ATTACK, jump_attack_texture, "JumpAttack")
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") and dash_ability:
 		dash()
 	# only allow jumping when on the ground
 	if jump and is_on_floor():
