@@ -398,6 +398,13 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="AbilityCoolDown" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
 [connection signal="chunk_changed" from="." to="." method="_on_chunk_changed"]
 [connection signal="area_entered" from="AttackPivot/AttackArea" to="." method="_on_attack_area_area_entered"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

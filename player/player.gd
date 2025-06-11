@@ -40,6 +40,11 @@ var dead = false
 const CHUNK_WIDTH = 1152  # Must match level.gd value
 var current_chunk_x = 0  # Now just tracking x-axis
 
+var dashing = false
+var dash_speed = 300
+var dash_time = 0.2
+var dash_timer = 0.0
+
 
 func _ready():
 	$AttackPivot/AttackArea.monitoring = false
@@ -103,6 +108,8 @@ func get_input():
 			change_state(ATTACK, run_attack2_texture, "RunAttack2")
 		elif state == JUMP and attack:
 			change_state(ATTACK, jump_attack_texture, "JumpAttack")
+	if Input.is_action_just_pressed("dash"):
+		dash()
 	# only allow jumping when on the ground
 	if jump and is_on_floor():
 		$JumpSound.play()
@@ -187,6 +194,17 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	get_input()
 	
+	if dashing:
+		var direction = 1 if not $Sprite2D.flip_h else -1
+		velocity.x = dash_speed * direction
+		dash_timer -= delta
+		if dash_timer <= 0:
+			dashing = false
+	else:
+		get_input()  # only get input when not dashing
+		if not Input.is_action_pressed("dash"):
+			velocity.x = 0  # reset after dash stops
+	
 	move_and_slide()
 	
 	if state == HURT:
@@ -250,3 +268,11 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 
 func _on_attack_cool_down_timeout() -> void:
 	can_attack = true
+
+
+func dash():
+	if $AbilityCoolDown.is_stopped():
+		if not dashing:
+			$AbilityCoolDown.start()
+			dashing = true
+			dash_timer = dash_time
