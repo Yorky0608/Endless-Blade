@@ -8,8 +8,6 @@ var survived_time = 0
 
 var current_score = 0
 
-
-
 func _ready():
 	var player = get_parent()
 	# Initialize display

@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1749668283
+::res://::1749744196
 export_presets.cfg::TextFile::-1::1749604319::0::1::::<><>::
 game_state.gd::GDScript::-1::1749604319::0::1::::<>Node<>::
 global.gd::GDScript::-1::1749604319::0::1::::<>Node<>::
@@ -8,10 +8,10 @@ main.gd::GDScript::-1::1749604319::0::1::::<>Node<>::
 main.tscn::PackedScene::483754651837636812::1749604319::0::1::::<><>::res://main.gd
 README.md::TextFile::-1::1749604317::0::1::::<><>::
 scale.gd::GDScript::-1::1749604319::0::1::::<>Node2D<>::
-scale.tscn::PackedScene::1089693370726928739::1749660003::0::1::::<><>::res://scale.gd
-tile_setup.tscn::PackedScene::1659028538676420443::1749660002::0::1::::<><>::uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png<>uid://bspy4rvse1yv8::::res://player/player.tscn<>uid://dpdjlrgk2esb5::::res://levels/chunk_3.tscn<>uid://dnu0rceo3bl7m::::res://enemies/skelly.tscn
+scale.tscn::PackedScene::1089693370726928739::1749739176::0::1::::<><>::res://scale.gd
+tile_setup.tscn::PackedScene::1659028538676420443::1749739175::0::1::::<><>::uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png<>uid://bspy4rvse1yv8::::res://player/player.tscn<>uid://dpdjlrgk2esb5::::res://levels/chunk_3.tscn<>uid://dnu0rceo3bl7m::::res://enemies/skelly.tscn
 ui.gd::GDScript::-1::1749604320::0::1::::<>CanvasLayer<>::
-ui.tscn::PackedScene::6478987166949213765::1749660003::0::1::::<><>::res://ui.gd<>uid://1mt6tq6qrv1k::::res://assets/Kenney Thick.ttf<>uid://wwdil1cn3sse::::res://assets/health_bar.png<>uid://d1lb4w20pjyap::::res://ui/menu.tscn
+ui.tscn::PackedScene::6478987166949213765::1749739175::0::1::::<><>::res://ui.gd<>uid://1mt6tq6qrv1k::::res://assets/Kenney Thick.ttf<>uid://wwdil1cn3sse::::res://assets/health_bar.png<>uid://d1lb4w20pjyap::::res://ui/menu.tscn
 ::res://assets/::1749604494
 EndlessBlade.png::CompressedTexture2D::1112654323549418252::1749604317::1749604494::1::::<><>::
 health_bar.png::CompressedTexture2D::1589767925986697632::1749604317::1749604494::1::::<><>::
@@ -89,17 +89,17 @@ license.txt::TextFile::-1::1749604317::0::1::::<><>::
 5.png::CompressedTexture2D::3275780504130098962::1749604317::1749604494::1::::<><>::
 2304x1296.png::CompressedTexture2D::8018707973454527332::1749604317::1749604494::1::::<><>::
 ::res://download/::1749604318
-::res://enemies/::1749660002
+::res://enemies/::1749739174
 enemy.gd::GDScript::-1::1749604319::0::1::::<>CharacterBody2D<>::
-skelly.tscn::PackedScene::8114552968669948928::1749660002::0::1::::<><>::res://enemies/enemy.gd<>uid://dwd7f51hik30e::::res://monsters3/Skeleton/Walk.png<>uid://blxaghsre4243::::res://assets/audio/bone-break-sound-ver-2-269660.mp3
-::res://levels/::1749660003
-background.tscn::PackedScene::1482273413283732463::1749660002::0::1::::<><>::uid://dstb7h7ov7jqe::::res://background/5/2304x1296.png
-chunk1.tscn::PackedScene::63499747406060792::1749660002::0::1::::<><>::uid://vea3dq41ewm6::::res://levels/background.tscn<>uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png
-chunk2.tscn::PackedScene::6805402301651674918::1749660003::0::1::::<><>::uid://vea3dq41ewm6::::res://levels/background.tscn<>uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png
-chunk_3.tscn::PackedScene::8218854838236212632::1749660003::0::1::::<><>::uid://vea3dq41ewm6::::res://levels/background.tscn<>uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png
+skelly.tscn::PackedScene::8114552968669948928::1749739174::0::1::::<><>::res://enemies/enemy.gd<>uid://dwd7f51hik30e::::res://monsters3/Skeleton/Walk.png<>uid://blxaghsre4243::::res://assets/audio/bone-break-sound-ver-2-269660.mp3
+::res://levels/::1749739175
+background.tscn::PackedScene::1482273413283732463::1749739175::0::1::::<><>::uid://dstb7h7ov7jqe::::res://background/5/2304x1296.png
+chunk1.tscn::PackedScene::63499747406060792::1749739175::0::1::::<><>::uid://vea3dq41ewm6::::res://levels/background.tscn<>uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png
+chunk2.tscn::PackedScene::6805402301651674918::1749739175::0::1::::<><>::uid://vea3dq41ewm6::::res://levels/background.tscn<>uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png
+chunk_3.tscn::PackedScene::8218854838236212632::1749739175::0::1::::<><>::uid://vea3dq41ewm6::::res://levels/background.tscn<>uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png
 level.gd::GDScript::-1::1749604319::0::1::::LevelManager<>Node2D<>::
-level.tscn::PackedScene::5558306840774163582::1749660003::0::1::::<><>::res://levels/level.gd<>uid://bspy4rvse1yv8::::res://player/player.tscn<>uid://34ier75hsy1u::::res://assets/audio/eerie-prelude-23078.ogg<>uid://pr4dc0k8fu4b::::res://scale.tscn
-spawn_chunk.tscn::PackedScene::8097778500373861275::1749660003::0::1::::<><>::uid://vea3dq41ewm6::::res://levels/background.tscn<>uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png
+level.tscn::PackedScene::5558306840774163582::1749739175::0::1::::<><>::res://levels/level.gd<>uid://bspy4rvse1yv8::::res://player/player.tscn<>uid://34ier75hsy1u::::res://assets/audio/eerie-prelude-23078.ogg<>uid://pr4dc0k8fu4b::::res://scale.tscn
+spawn_chunk.tscn::PackedScene::8097778500373861275::1749739175::0::1::::<><>::uid://vea3dq41ewm6::::res://levels/background.tscn<>uid://bm7s6wl5mv6mu::::res://tileset/1 Tiles/Tileset.png
 ::res://monsters1/::1749604319
 ::res://monsters1/PNG/::1749604319
 ::res://monsters1/PNG/demon/::1749604494
@@ -332,9 +332,9 @@ Jump.png::CompressedTexture2D::5828081737794104663::1749604319::1749604492::1:::
 Run.png::CompressedTexture2D::6255341669932822830::1749604319::1749604492::1::::<><>::
 Special_attack.png::CompressedTexture2D::1237775493139734178::1749604319::1749604492::1::::<><>::
 Walk.png::CompressedTexture2D::8711563233310830326::1749604319::1749604492::1::::<><>::
-::res://player/::1749660002
-player.gd::GDScript::-1::1749660002::0::1::::<>CharacterBody2D<>::
-player.tscn::PackedScene::3682295457500296283::1749660002::0::1::::<><>::res://player/player.gd<>uid://55kc7plv4lg1::::res://sprites/2/Attack2.png<>uid://dmk6se6cl7nbm::::res://assets/audio/action_jump.mp3<>uid://cykp8bxmpd8hl::::res://ui.tscn<>uid://cp1twjkxgovl1::::res://assets/audio/slap-hurt-pain-sound-effect-262618.mp3<>uid://dkvp3sgk4kqp::::res://assets/audio/sword-sound-2-36274.mp3
+::res://player/::1749739174
+player.gd::GDScript::-1::1749739174::0::1::::<>CharacterBody2D<>::
+player.tscn::PackedScene::3682295457500296283::1749739174::0::1::::<><>::res://player/player.gd<>uid://55kc7plv4lg1::::res://sprites/2/Attack2.png<>uid://dmk6se6cl7nbm::::res://assets/audio/action_jump.mp3<>uid://cykp8bxmpd8hl::::res://ui.tscn<>uid://cp1twjkxgovl1::::res://assets/audio/slap-hurt-pain-sound-effect-262618.mp3<>uid://dkvp3sgk4kqp::::res://assets/audio/sword-sound-2-36274.mp3
 ::res://sprites/::1749604492
 COUPON.png::CompressedTexture2D::5109780671939711300::1749604320::1749604492::1::::<><>::
 license.txt::TextFile::-1::1749604320::0::1::::<><>::
@@ -596,13 +596,13 @@ Pointer3.png::CompressedTexture2D::1513372607952219091::1749604320::1749604493::
 Card.png::CompressedTexture2D::8401081269770803542::1749604320::1749604493::1::::<><>::
 Chest.png::CompressedTexture2D::4578768811804807063::1749604320::1749604493::1::::<><>::
 Money.png::CompressedTexture2D::7513144105176719924::1749604320::1749604493::1::::<><>::
-::res://ui/::1749660003
+::res://ui/::1749739237
 menu.gd::GDScript::-1::1749604320::0::1::::<>CanvasLayer<>::
-menu.tres::Theme::6072735147538930159::1749658078::0::1::::<><>::uid://1mt6tq6qrv1k::::res://assets/Kenney Thick.ttf<>uid://ck151y57ioiyx::::res://ui/new_style_box_flat.tres
-menu.tscn::PackedScene::9006993844358545671::1749660003::0::1::::<><>::res://ui/menu.gd<>uid://csrxccdqow62n::::res://ui/menu.tres<>uid://drpasabq4wjcq::::res://ui/shop.tscn
-new_style_box_flat.tres::StyleBoxFlat::5530272874166321879::1749658078::0::1::::<><>::
-shop.gd::GDScript::-1::1749604320::0::1::::<>CanvasLayer<>::
+menu.tres::Theme::6072735147538930159::1749737917::0::1::::<><>::uid://1mt6tq6qrv1k::::res://assets/Kenney Thick.ttf<>uid://ck151y57ioiyx::::res://ui/new_style_box_flat.tres
+menu.tscn::PackedScene::9006993844358545671::1749739176::0::1::::<><>::res://ui/menu.gd<>uid://csrxccdqow62n::::res://ui/menu.tres<>uid://drpasabq4wjcq::::res://ui/shop.tscn
+new_style_box_flat.tres::StyleBoxFlat::5530272874166321879::1749737917::0::1::::<><>::
+shop.gd::GDScript::-1::1749738844::0::1::::<>CanvasLayer<>::
 shop.tres::Theme::234682003516110193::1749604320::0::1::::<><>::uid://ck151y57ioiyx::::res://ui/new_style_box_flat.tres<>uid://1mt6tq6qrv1k::::res://assets/Kenney Thick.ttf
-shop.tscn::PackedScene::8383470205838438584::1749660003::0::1::::<><>::res://ui/shop.gd<>uid://1mt6tq6qrv1k::::res://assets/Kenney Thick.ttf<>uid://dlxgcekwp6ob::::res://ui/shop.tres<>uid://csrxccdqow62n::::res://ui/menu.tres
+shop.tscn::PackedScene::8383470205838438584::1749739237::0::1::::<><>::res://ui/shop.gd<>uid://1mt6tq6qrv1k::::res://assets/Kenney Thick.ttf<>uid://dlxgcekwp6ob::::res://ui/shop.tres<>uid://csrxccdqow62n::::res://ui/menu.tres
 title.gd::GDScript::-1::1749604320::0::1::::<>Control<>::
-title.tscn::PackedScene::7516124964300617692::1749660003::0::1::::<><>::res://ui/title.gd<>uid://1mt6tq6qrv1k::::res://assets/Kenney Thick.ttf<>uid://34ier75hsy1u::::res://assets/audio/eerie-prelude-23078.ogg<>uid://vea3dq41ewm6::::res://levels/background.tscn<>uid://pr4dc0k8fu4b::::res://scale.tscn<>uid://csrxccdqow62n::::res://ui/menu.tres
+title.tscn::PackedScene::7516124964300617692::1749739175::0::1::::<><>::res://ui/title.gd<>uid://1mt6tq6qrv1k::::res://assets/Kenney Thick.ttf<>uid://34ier75hsy1u::::res://assets/audio/eerie-prelude-23078.ogg<>uid://vea3dq41ewm6::::res://levels/background.tscn<>uid://pr4dc0k8fu4b::::res://scale.tscn<>uid://csrxccdqow62n::::res://ui/menu.tres

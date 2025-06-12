@@ -193,6 +193,7 @@ func change_state(new_state, texture, animation):
 func _physics_process(delta):
 	
 	velocity.y += gravity * delta
+		
 	get_input()
 	
 	if dashing:
@@ -201,10 +202,6 @@ func _physics_process(delta):
 		dash_timer -= delta
 		if dash_timer <= 0:
 			dashing = false
-	else:
-		get_input()  # only get input when not dashing
-		if not Input.is_action_pressed("dash"):
-			velocity.x = 0  # reset after dash stops
 	
 	move_and_slide()
 	

@@ -127,14 +127,16 @@ Price: 500"
 label_settings = SubResource("LabelSettings_nipft")
 
 [node name="DashTime" type="Button" parent="Control"]
+layout_mode = 0
 offset_left = 45.0
 offset_top = 600.0
 offset_right = 368.0
 offset_bottom = 631.0
 theme = ExtResource("2_t4vr5")
-text = "Reduce Cool Down"
+text = "Unlock Dash Ability"
 
 [node name="Dash" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 530.0
 offset_right = 402.0
@@ -173,28 +175,28 @@ text = "Upgrade Attack Radiius"
 [node name="UpgradeAttackRadius" type="Label" parent="Control2"]
 layout_mode = 0
 offset_left = -477.0
-offset_top = 136.0
+offset_top = 130.0
 offset_right = -20.0
-offset_bottom = 195.0
-text = "Increase Attack Radius + 1
+offset_bottom = 189.0
+text = "Increase Attack Radius + 5
 Price: 500"
 label_settings = SubResource("LabelSettings_yr86l")
 
 [node name="Health" type="Button" parent="Control2"]
 layout_mode = 0
 offset_left = -318.0
-offset_top = 464.0
+offset_top = 400.0
 offset_right = -40.0
-offset_bottom = 495.0
+offset_bottom = 431.0
 theme = ExtResource("2_t4vr5")
 text = "Upgrade Health"
 
 [node name="UpgradeHealth" type="Label" parent="Control2"]
 layout_mode = 0
 offset_left = -357.0
-offset_top = 400.0
+offset_top = 330.0
 offset_right = -20.0
-offset_bottom = 459.0
+offset_bottom = 389.0
 text = "Increase Health + 5
 Price: 500"
 label_settings = SubResource("LabelSettings_sbkm0")

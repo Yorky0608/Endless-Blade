@@ -15,7 +15,6 @@ func toggle_pause():
 		$Shop2/AnimationPlayer.play("invisible")
 		var ui = get_node("/root/Main/Level/Entities/Player/UI")
 		ui.ui_vis()
-		await get_tree().create_timer(1.0).timeout
 	get_tree().paused = paused
 
 # Called when the node enters the scene tree for the first time.
